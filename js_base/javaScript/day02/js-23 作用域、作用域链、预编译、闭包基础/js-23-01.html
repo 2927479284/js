@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        var a = 1;
+        function a(){
+            console.log("a");
+        }
+        console.log(a);
+
+        // 1.Ao -> function 独立的仓库
+        // 对象
+        var obj = {a: "aaa"};
+        function test01(){}
+        console.log(test01.name);// test01
+        // 1.1 由此看出 函数也是一种对象类型 引用类型 引用值
+        // test01.name test01.length test01.protoytpe 
+        // 对象 -> 有些属性是我们无法访问的
+        //         Js引擎内部固有的隐式属性
+        // 2.[[scope]]
+        // 2.1 函数创建时，生成的一个js内部的隐式属性
+        // 2.2 函数存储作用域链的容器
+        //     Ao/Go
+        //     Ao:函数的执行期上下文
+        //     Go:全局的执行期上下文
+        //     函数执行完成以后，Ao是要销毁的。
+        //     Ao是一个及时的存储容器.
+
+        function b(){
+            function c(){
+                var c = 2;
+            }
+            var b = 1;
+            c();
+        }
+        var d = 3; 
+        b();
+
+        // test02(); 报错
+        var test02 = function(){
+            console.log("test02");
+        }
+
+        // 3.闭包
+
+        function test03(){
+            function test04(){
+                var f = 2;
+                console.log(e);
+            }
+            var e  = 1;
+            return test04();
+        }
+        var g = 3;
+        var test03 = test03();
+    
+
+        console.log("-------------------3.闭包分割线--------------------------");
+        function aa(){
+            var a = 1;
+            function bb(number){
+                a = number;
+                var bb = number;
+                console.log(a,bb);
+            } 
+            return bb;
+        }
+        var bb = aa();
+        bb(1001111);
+        
+    </script>
+
+
+
+</body>
+</html>

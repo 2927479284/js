@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面试题分享</title>
+</head>
+<body>
+    
+    <ul>
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script type="text/javascript">
+        var lis = document.querySelectorAll('li');
+        for (var i = 0; i < lis.length; i++) {
+            (function(j){
+                lis[j].onclick = function(){
+                console.log(j);
+            }
+            })(i);
+        }
+
+
+        var fn = (function(){return "1"},function(){return "2";})();
+        console.log(fn);
+
+        console.log(typeof(function b(){}));// (function b(){}) 表达式里面忽略 名称
+        console.log(10 + typeof(b));
+    </script>
+</body>
+</html> 

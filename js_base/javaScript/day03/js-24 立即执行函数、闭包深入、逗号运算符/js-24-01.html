@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script type="text/javascript">
+        // 1.立即执行函数[自动执行]
+        // 执行完后 立即销毁
+        (function(){
+            console.log("当前是立即执行函数方法，没有任何方法调用此方法");
+        })();
+        (function(a,b){
+            console.log("参数一："+a+"  参数二："+b+"的互加结果为："+(a+b));
+        })(1,2);
+
+
+        var test = function(){
+            console.log("立即执行");
+        }();
+        // function test(){}(); 此方法无法被立即执行，因他不是表达式 只是单纯的函数声明
+        // 总结：一定是表达式才能被执行符号执行
+        var test01 = function(){
+            console.log("test01");
+        };
+        console.log(test01);// 打印的是个function
+        var test02 = function(){
+            console.log("test02");
+        }(); 
+        console.log(test02);// 方法执行 打印test02 undefined(因为没有返回值)
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script type="text/javascript">
+        // 1.初始化参数 默认值为undefind
+        function test01(a=1,b){
+            var a = 5;
+            console.log(a);
+            console.log(b);
+        }
+        test01(2)
+
+        // 2.预编译
+        // 2.1检查通篇的语法错误
+        // 2.2预编译的过程
+        // 2.3解释一行，执行一行
+        test02();
+        function test02(){
+            console.log("test02");
+        }
+        // test02();
+        console.log(a);// undefined
+        var a = 10;
+        // 2.4 总结：函数整体提升，变量提升声明不提升赋值。
+
+        // 3.AO activation object
+        //活跃对象/函数上下文
+        // 3.1找到函数所有的形参&变量声明
+        // 3.2给形参赋值
+        // 3.3找到函数声明&赋值函数体
+        // 3.4执行函数
+        console.log("-------------------分割线--------------------------");
+        function test03(a){
+            console.log(a);
+            var a = 1;
+            console.log(a);
+            function a(){}
+            console.log(a);
+            var b = function(){}
+            console.log(b);
+            function d(){}
+        }
+        test03();
+        // 4.全局GO global object 全局上下文
+        // 4.1寻找变量声明
+        // 4.2寻找函数声明
+        // 4.3 执行
+        console.log("-------------------分割线--------------------------");
+        var e = 1;
+        function e(){
+            console.log(2);
+        }
+        console.log(e);
+        /*GO={
+            e:  undefined -> function e(){} ->1
+        }*/
+
+        function test04() {
+            var a = b = 1;
+            console.log(a);
+        }
+        test04();
+        /*
+            Go={
+                2.b: 1
+            }
+        */
+        /*
+            Vo={
+                1.a: undefind 
+                3.-> 1
+            }
+        */
+
+        // 5.请写出下来Ao Go
+        function test05(){
+            console.log(g);
+            if(f){
+                var g = 2;
+            }
+            console.log(g);
+            h = 3;
+            console.log(h);
+        }
+        var f;
+        f = 1;
+        test05();
+        console.log(f);
+
+        // 6.面试题分享
+        // 6.1
+        console.log("-------------------6.面试题分享 分割线--------------------------");
+        if(typeof(a) && (-true) + (+undefined) + ''){
+            console.log("通过了");
+        }else{
+            console.log("未通过");
+        }
+        // 6.2
+        console.log(!!' ' + !!'' - !!false || '未通过');
+    </script>
+</body>
+</html>
