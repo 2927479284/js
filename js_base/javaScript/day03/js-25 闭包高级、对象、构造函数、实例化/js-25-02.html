@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+       /* 对象案例1 */
+
+       var attendance = {
+        students: [],
+        total: 6,
+        add: function(name){
+            attendance.students.push(name);
+            if(attendance.students.length === attendance.total){
+                console.log(name + "到！学生已到齐");
+            }else{
+                console.log(name + "到！学生未到齐");
+            }
+        },
+        delete: function(name){
+            var idx = attendance.students.indexOf(name);
+            if(idx != -1){
+                attendance.students.splice(idx,1);
+                console.log(name+"早退。");
+                console.log("当前班级所剩学生："+attendance.students);
+            }else{
+                console.log("查无此人");
+            }
+        }
+       }
+
+       attendance.add("1");
+       attendance.add("2");
+       attendance.add("3");
+       attendance.add("4");
+       attendance.add("5");
+       attendance.add("6");
+       attendance.delete("6");
+
+    </script>
+</body>
+</html>
