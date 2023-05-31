@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-26 构造函数及实例化原理、包装类</title>
+    <!--  课时9  -->
+</head>
+<body>
+
+    <!--  包装类 作业  -->
+    <script type="text/javascript">
+        // 接收任意一个字符串，算出这个字符串的总字节数 0-255 是一个字节 255后是两个
+
+        function jisuan(str){
+            var total = 0;
+            for (let index = 0; index < str.length; index++) {
+                if(str.charCodeAt(index)<=255){
+                    // 一个字节
+                    total+=1;
+                }else{
+                    // 两个字节
+                    total+=2;
+                }
+            }
+            return total;
+        }
+        var total = jisuan("h4f654uh8t6f5416");
+        console.log(total);
+    </script>
+</body>
+</html>

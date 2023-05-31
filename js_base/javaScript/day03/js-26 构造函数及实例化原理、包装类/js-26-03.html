@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-26 构造函数及实例化原理、包装类</title>
+    <!--  课时9  -->
+</head>
+<body>
+
+    <!--  包装类 案例  -->
+    <script type="text/javascript">
+        // 1. 案例1
+        var str = "didi";
+        str += 10;// didi10
+        var str1 = typeof(str);// string 如果非要打印 则在此new String() 即可
+        if(str1.length === 6){// true
+            str1.text = "string";// new String(str1).text = string; delete;
+        }
+        console.log(str1.text);// undefined        
+
+
+        // 2.案例2
+        function Test(opt){
+            var d = 1;
+            this.a = opt.a;
+            this.b = opt.b;
+            this.c = opt.c;
+            this.f = function(){
+                d++;
+                console.log(d);
+            }
+            this.g = this.f;
+        }
+        var test01 = new Test({a:1,b:2,c:3});
+        var test02 = new Test({a:1,b:2,c:3});
+        test01.g();// 2
+        test01.g();// 3
+        test02.g();// 2
+    </script>
+</body>
+</html>
