@@ -23,7 +23,7 @@
         },
         delete: function(name){
             var idx = attendance.students.indexOf(name);
-            if(idx != -1){
+            if(idx !== -1){
                 attendance.students.splice(idx,1);
                 console.log(name+"早退。");
                 console.log("当前班级所剩学生："+attendance.students);

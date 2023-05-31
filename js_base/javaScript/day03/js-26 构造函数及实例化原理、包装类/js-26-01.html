@@ -4,9 +4,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>js-26 构造函数及实例化原理、包装类</title>
+    <!--  课时9  -->
 </head>
 <body>
-    
+
+
+    <script type="text/javascript">
+
+        /**
+         * 此时his指向Window
+         * 此时如果自定义返回数据  基本类型 还是返回的this 其他为对应类型 如：方法(函数)，对象
+         * @constructor
+         */
+        function Car(){
+            this.color = "绿色";
+            console.log(this.color);
+        }
+        Car();
+        this.color = "红色";
+        Car();
+        console.log(this.color);
+
+        /**
+         * 此时this指向当前实例化对象
+         * 此时如果自定义返回数据  基本类型 还是返回的this 其他为对应类型 如：方法(函数)，对象
+         * @param opt
+         * @constructor
+         */
+        // Ao = {
+        //  this: {}
+        // }
+        function Car1(opt){
+            // this = {
+            //  color: opt.color;
+            //  print: function (){
+            //      console.log(this.color)
+            //  }
+            // }
+            this.color = opt.color;
+            this.print = function (){
+                console.log(this.color)
+            }
+            // return this;
+        }
+        var c1 = new Car1({color: "蓝色"})
+        var c2 = new Car1({color: "天蓝色"})
+        c1.print();
+        c2.print();
+
+
+        // 不用this 生成构造函数对象
+        function Car2(opt){
+            var me = {};
+            me.color = opt.color;
+            me.print = function (){
+                console.log(me.color)
+            }
+            return me;
+        }
+        var c3 = Car2({color: "黑色"});
+        console.log(c3);
+        c3.print();
+    </script>
 </body>
 </html>

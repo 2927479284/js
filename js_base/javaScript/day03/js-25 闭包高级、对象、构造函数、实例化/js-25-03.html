@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+     // 对象字面量，对象直接量
+     var obj = {
+         name: "张三",
+         age: 18
+     }
+     obj.name = "李四";
+     console.log(obj)
+
+     // new Object()创建对象 与 obj={} 相等
+     obj1 = new Object();
+     obj1.name = "王五";
+     obj1.sex = "男士";
+     console.log(obj1);
+
+     // 自定义构造函数
+     function Teacher(opt){
+         // 当前Teacher 未被实例化时 this 毫无指向
+         this.name = opt.name;
+         this.age = opt.age;
+         this.sex = opt.sex;
+         this.weight = opt.weight;
+         this.eat = function (){
+             this.weight++;
+             console.log(this.weight)
+         }
+         this.smoke = function (){
+             this.weight--;
+             console.log(this.weight)
+         }
+     }
+     var t1 = new Teacher({
+         name: "张三",
+         age: 18,
+         sex: "男",
+         weight:145
+     });
+     var t2 = new Teacher({
+         name: "李四",
+         age: 17,
+         sex: "女",
+         weight: 90
+     });
+     console.log(t1,t2);
+     t1.eat()
+     t2.smoke()
+
+    </script>
+</body>
+</html>

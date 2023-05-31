@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-26 构造函数及实例化原理、包装类</title>
+    <!--  课时9  -->
+</head>
+<body>
+
+    <!--  包装类  -->
+    <script type="text/javascript">
+
+        // 包装类参与运算 返回结果为 原始值类型
+        // var a = 1;
+        // var aa = new Number(a);
+        // aa.len = 10;
+        // console.log(a);
+        // console.log(aa);
+        // var b = aa + a;
+        // console.log(b);
+        // var d = aa.len + a;
+        // console.log(d);
+
+
+        var a = 123;
+        a.len = 3;// new Number(123).len = 3;// 此时没有结果可以接收这个转换 系统默认delete删除 所以结果为undefined 任何属性名都是这样
+        console.log(a.len);
+    </script>
+</body>
+</html>
