@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-27 原型、原型链、闭包立即执行函数、插件开发</title>
+</head>
+<body>
+    <!-- 课时10 -->
+    <script type="text/javascript">
+        //
+        function Car(){}
+        Car.prototype.name='张三';
+        var car = new Car();
+        console.log(car)
+        console.log(car.name)
+        Car.prototype={
+            name:'李四'
+        };
+        //Car.prototype.name='李四';
+        console.log(car)
+        console.log(car.name);
+
+    </script>
+</body>
+</html>

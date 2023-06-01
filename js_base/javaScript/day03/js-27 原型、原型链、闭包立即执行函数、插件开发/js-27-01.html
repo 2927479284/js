@@ -9,7 +9,77 @@
 <body>
     <!-- 课时10 -->
     <script type="text/javascript">
-        // 
+        // prototype
+        // 打印函数的prototype  其实是function的一个属性 这个属性的类型是一个对象Object
+        // function HandPhone(){
+        //
+        // }
+        // console.log(HandPhone.prototype);
+
+        // function HandPhone(opt){
+        //     this.color = opt.color;
+        //     this.brand = opt.brand;
+        // }
+        // HandPhone.prototype.rom = "rom";
+        // HandPhone.prototype.ram = "ram";
+        // HandPhone.prototype.add = function () {
+        //     console.log("公共方法add")
+        // }
+        // var h1 = new HandPhone({color:"绿色",brand:"小米"});
+        // var h2 = new HandPhone({color:"蓝色",brand:"华为"});
+        // console.log(h1.rom)//rom
+        // console.log(h2.ram)//ram
+        // h1.add();
+        // h2.add();
+        // 得出原型上面的属性&方法是对象的公共属性/方法
+
+
+        /**
+         * 函数的原型上面的的属性constructor(构造函数)指向->函数本身【可改】
+         */
+        function HandPhone(opt){
+            this.color = opt.color;
+            this.brand = opt.brand;
+        }
+        function Telephone(){}
+        HandPhone.prototype = {
+            //constructor:Telephone, 改变构造函数指向
+            rom:'rom',
+            ram:'ram',
+            add: function (){
+                console.log("公共方法add")
+            }
+        }
+        console.log(HandPhone.prototype)
+        var handPhone = new HandPhone({color:"绿色",brand:"小米"});
+        console.log(handPhone);
+
+        // function Car(){}
+        // Car.prototype.name = 'car'
+        // var car = new Car();
+        // console.log(car)
+
+/*        function Car(){
+            var this = {
+                __proto__: Car.prototype
+            }
+            return this;
+        }
+        var car = new Car();*/
+
+
+        function Person(){}
+        Person.prototype.name="张三";
+        var person = new Person();
+        console.log(person)//打印对象 内置proto打印什么
+        console.log(person.name)//张三
+        p1 = {
+            name:"李四"
+        }
+        person.__proto__ = p1;
+
+        console.log(person.name);//李四
+        console.log(person);//打印对象 内置proto打印什么
     </script>
 </body>
 </html>

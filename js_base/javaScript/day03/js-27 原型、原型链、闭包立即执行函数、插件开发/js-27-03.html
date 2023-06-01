@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-27 原型、原型链、闭包立即执行函数、插件开发</title>
+</head>
+<body>
+    <!-- 课时10 -->
+    <script type="text/javascript">
+        // 作业
+        // 写一个立即执行函数包含对传入的两个数字进行加减乘除
+        ;(function (){
+            var Com = function (opt){
+                this.first = opt.first;
+                this.two = opt.two;
+            }
+            Com.prototype = {
+                sum: function (){
+                    console.log("加法: " + (this.first + this.two));
+                },
+                reduce: function (){
+                    console.log("减法: " + (this.first - this.two));
+                },
+                ride: function (){
+                    console.log("乘法: " + (this.first * this.two));
+                },
+                except: function (){
+                    console.log("除法: " + (this.first / this.two));
+                }
+            }
+            window.Com = Com;
+        })()
+        var com = new Com({first:1,two:2});
+        com.sum();
+        com.reduce();
+        com.ride();
+        com.except();
+    </script>
+</body>
+</html>
