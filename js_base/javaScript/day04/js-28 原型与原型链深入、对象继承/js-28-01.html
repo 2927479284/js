@@ -9,7 +9,30 @@
 <body>
     <!-- 课时11 -->
     <script type="text/javascript">
+        //1.原型链初识
 
+        //教授
+        function Professor(){}
+        Professor.prototype.tskill="java";
+        var professor = new Professor();
+
+        //老师
+        function Teacher(){
+            this.mskill="js";
+        }
+        Teacher.prototype = professor;
+        var teacher = new Teacher();
+
+        //学生
+        function Student(){
+            this.pskill="html";
+        }
+        Student.prototype = teacher;
+        var student = new Student();
+        console.log(student)
+        console.log("学生："+student.pskill);
+        console.log("老师："+student.mskill);
+        console.log("教授："+student.tskill);
     </script>
 </body>
 </html>

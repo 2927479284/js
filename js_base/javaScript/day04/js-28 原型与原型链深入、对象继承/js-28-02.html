@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-28 原型与原型链深入、对象继承</title>
+</head>
+<body>
+    <!-- 课时11 -->
+    <script type="text/javascript">
+        //2.小案例
+        /**
+         * 原型上的非引用值 无法直接改变
+         * 打印当前对象 会在this中新增一个weight:131 原型上的值不变
+         * @constructor
+         */
+        function Person(){
+            this.add = function (){
+                this.weight++;
+            }
+        }
+        Person.prototype={
+            weight:130
+        }
+        var person = new Person();
+        person.add();
+
+
+        //3
+        var obj1 = Object.create(null);
+        obj1.name = '张三';
+        var obj2 = Object.create(obj1);
+        var obj3 = {};
+        console.log(obj1,obj2,obj3)
+
+        var obj4 = Object.create(null);
+        //document.write(obj4) 报错
+        console.log(obj4)
+    </script>
+</body>
+</html>

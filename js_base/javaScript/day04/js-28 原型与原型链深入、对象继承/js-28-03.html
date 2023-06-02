@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-28 原型与原型链深入、对象继承</title>
+</head>
+<body>
+    <!-- 课时11 -->
+    <script type="text/javascript">
+        //3.call() apply()
+        function Computer(opt){
+            this.first = opt.first;
+            this.two = opt.two;
+            this.addition=function (){
+                console.log("加法："+(this.first+this.two));
+            }
+            // 减法
+            this.subtraction=function (){
+                console.log("减法："+(this.first-this.two));
+            }
+        }
+/*        Computer.prototype={
+            // 加法
+            addition:function (){
+                console.log("加法："+this.first+this.two);
+            },
+            // 减法
+            subtraction:function (){
+                console.log("减法："+this.first-this.two);
+            }
+        }*/
+
+        function FullComputer(opt){
+            Computer.call(this,opt);
+            this.first = opt.first;
+            this.two = opt.two;
+        }
+        FullComputer.prototype={
+            // 乘法
+            multiplication:function (){
+                console.log("乘法："+(this.first*this.two));
+            },
+            // 除法
+            division:function (){
+                console.log("除法："+(this.first/this.two));
+            }
+        }
+
+        var fullComputer = new FullComputer({first:1,two:2});
+        console.log(fullComputer)
+        fullComputer.addition();
+        fullComputer.subtraction();
+        fullComputer.multiplication();
+        fullComputer.division();
+    </script>
+</body>
+</html>
