@@ -9,7 +9,50 @@
 <body>
     <!-- 课时12 -->
     <script type="text/javascript">
+        //
+        //
+        // function Test(){}
+        // Test.prototype = {}
+        //
+        // var test = new Test();
+        // console.log(test)
+        //
+        //
+        // function Teacher(){}
+        // Teacher.prototype = {
+        //     name:'教师',
+        //     tSkill:'java'
+        // }
+        // function Buffer(){}
+        // Buffer.prototype = Teacher.prototype;
+        // var buffer = new Buffer();
+        // console.log(buffer)
+        //
+        // function Student(){
+        //     this.name = "学生";
+        //     this.pskill = "html";
+        // }
+        // Student.prototype = buffer;
+        // var student = new Student();
+        // console.log(student)
 
+        function Teacher(){}
+        Teacher.prototype = {
+            name:'教师',
+            tSkill:'java'
+        }
+        function Buffer(){}
+        Buffer.prototype = Teacher.prototype;
+        var buffer = new Buffer();
+        console.log(buffer)
+
+        function Student(){
+            this.name = "学生";
+            this.pskill = "html";
+        }
+        Student.prototype = buffer;
+        var student = new Student();
+        console.log(student)
     </script>
 </body>
 </html>

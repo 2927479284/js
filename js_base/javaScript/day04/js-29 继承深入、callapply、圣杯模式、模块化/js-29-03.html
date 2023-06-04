@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-29 继承深入、callapply、圣杯模式、模块化</title>
+</head>
+<body>
+    <!-- 课时12 -->
+    <script type="text/javascript">
+        // 小案例
+        var inherit = (function (){
+            return function (Target,Origin){
+                function Buffer(){}
+                Buffer.prototype = Origin.prototype;
+                var buffer = new Buffer();
+                Target.prototype = buffer;
+                Target.constructor = Target;
+                Target.prototype.supper_class = Origin;
+            }
+        })();
+        var InitProgrammer = (function (){
+            var Programmer = function (){};
+            Programmer.prototype = {
+                name:'程序员',
+                tool:'计算机',
+                work:'编写应用程序',
+                druation:"10个小时",
+                say:function (){
+                    console.log('我是一名'+this.myname+this.name+'  我的工作是用'+this.tool+this.work
+                        +'  我每天需要工作'+this.druation+' 我的工作需要用到'+this.lang.toString());
+                }
+            }
+            function FrontEnd(){}
+            function BackEnd(){}
+            inherit(FrontEnd,Programmer);
+            inherit(BackEnd,Programmer);
+            FrontEnd.prototype.lang=['HTML','CSS','JS'];
+            FrontEnd.prototype.myname = '前端';
+
+            BackEnd.prototype.lang=['java','Node','PHP'];
+            BackEnd.prototype.myname = '后端';
+            return {
+                FrontEnd:FrontEnd,
+                BackEnd:BackEnd
+            };
+        })();
+        var frontEnd = new InitProgrammer.FrontEnd();
+        var backEnd = new InitProgrammer.BackEnd();
+        frontEnd.say();
+        backEnd.say();
+    </script>
+</body>
+</html>
