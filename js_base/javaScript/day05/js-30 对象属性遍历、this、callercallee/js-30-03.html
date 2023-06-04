@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-30 对象属性遍历、this、callercallee</title>
+</head>
+<body>
+    <!-- 课时13 -->
+    <script type="text/javascript">
+        // callee / caller
+
+        function test01(a,b,c,d){
+            console.log("函数形参长度："+arguments.callee.length)
+            console.log("函数形参长度："+test01.length)
+            console.log("函数实参长度："+arguments.length)
+        }
+        test01(3)
+
+
+        test02()
+        function test02(){
+            test03();
+        }
+        function test03(){
+            console.log(test03.caller)// 打印谁调用的我
+        }
+    </script>
+</body>
+</html>

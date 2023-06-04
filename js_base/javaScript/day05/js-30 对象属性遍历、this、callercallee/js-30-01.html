@@ -9,7 +9,40 @@
 <body>
     <!-- 课时13 -->
     <script type="text/javascript">
+        // 对象属性遍历
+        var obj = {
+            No1: "1",
+            No2: "2",
+            No3: "3"
+        }
+        // 获取对象的属性方式1
+        console.log(obj.No1);// 1
+        // 获取对象的属性方式2
+        console.log(obj['No1']);// 1
+        //console.log(obj[No1]);//Uncaught ReferenceError: No1 is not defined
 
+        for (var objKey in obj) {
+            // 因为objkey 本身就为 string 类型
+            console.log(typeof objKey)
+            //console.log(obj.objKey)// 这样会是undefined JS：obj.objKey-> obj['objKey']
+            // 正确打印如下：
+            console.log(obj[objKey])// 他本身类型就是 string 不需要重新加''引号
+        }
+        console.log("-------------------分割线-----------------------------")
+        // hasOwnProperty 排除原型上自定义的属性 参数 填写对象对应的key即可
+        function Car(){
+            this.name = "车";
+            this.color = "颜色";
+        }
+        Car.prototype.pName = '原型上面车的名字';
+        Car.prototype.pColor = '原型上面车的颜色';
+        var car = new Car();
+        //car.hasOwnProperty()
+        for (var key in car){
+            if (car.hasOwnProperty(key)){
+                console.log(car[key]);
+            }
+        }
     </script>
 </body>
 </html>

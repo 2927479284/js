@@ -38,6 +38,7 @@
             inherit(BackEnd,Programmer);
             FrontEnd.prototype.lang=['HTML','CSS','JS'];
             FrontEnd.prototype.myname = '前端';
+            FrontEnd.prototype.aaa="aaa";
 
             BackEnd.prototype.lang=['java','Node','PHP'];
             BackEnd.prototype.myname = '后端';
@@ -49,7 +50,10 @@
         var frontEnd = new InitProgrammer.FrontEnd();
         var backEnd = new InitProgrammer.BackEnd();
         frontEnd.say();
+        console.log(frontEnd);
+        frontEnd.bbb = 'bbb';
         backEnd.say();
+        console.log(backEnd)
     </script>
 </body>
 </html>
