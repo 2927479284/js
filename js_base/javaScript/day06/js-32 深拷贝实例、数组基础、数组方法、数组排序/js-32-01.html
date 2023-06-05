@@ -9,7 +9,42 @@
 <body>
     <!-- 课时15 -->
     <script type="text/javascript">
+        // 数组
+        // 三种方法
+        // 三种方式的__proto__ 指向同一个 Array.prototype
+        var arr1 = [];
+        var arr2 = new Array();
+        var arr3 = Array();
+        console.log(arr1,arr2,arr3);
 
+        // 对象 三种方法
+        // 三种方式的__proto__ 指向同一个 Object.prototype
+        var obj1 = {};
+        var obj2 = new Object();
+        var obj3 = Object();
+        console.log(obj1,obj2,obj3);
+
+        // -----------分割线----------------------
+        var arr4 = [1,2,3,4,5,6,7,8];
+        var obj4 = {
+            0:1,
+            1:2,
+            2:3,
+            3:4,
+            4:5,
+            5:6,
+            6:7,
+            7:8
+        }
+        // 可以看出 数组是一种另类的对象（另外一种对象的形式[在js中]）
+        console.log(arr4[1]);// 2
+        console.log(obj4[1]);// 2
+
+        arr5 = [,2,3,4,5,,6,];//稀松数组 最后一位不算
+        console.log(arr5.length)//7
+
+        arr6 = [1,2,3,4,5,6,7,8,9,10];
+        console.log(arr6[10])// undefined
     </script>
 </body>
 </html>y

@@ -9,7 +9,24 @@
 <body>
     <!-- 课时15 -->
     <script type="text/javascript">
+        // 1.splice 底层初探(负值)
+        var arr = ['a','b','c','d'];
+        arr.splice(-1,0,1,2,3,4,5,6);
+        console.log(arr);
 
+        // 底层初探
+        /**
+         * 传入正数/负数 找到其对应下标
+         * @param arr 对应数组
+         * @param index 下标
+         * @constructor
+         */
+        function mySplice(arr,index){
+            return index += index >= 0 ? 0 : arr.length;
+        }
+        var arr1 = ['a','b','c','d'];
+        var number = mySplice(arr1,1);
+        console.log(arr1[number]);
     </script>
 </body>
 </html>y

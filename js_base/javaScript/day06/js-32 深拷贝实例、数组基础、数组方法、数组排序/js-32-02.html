@@ -9,7 +9,37 @@
 <body>
     <!-- 课时15 -->
     <script type="text/javascript">
+        // 1.push unshift
+        // 返回值 是执行完当前方法后返回的新的数组的长度
+/*        arr1 = [1,2,3];
+        arr1.push(4);//数组末尾添加
+        arr1.unshift(0)//数组开头添加
+        console.log(arr1)
 
+        // 1.1自定义myPush
+        // 谁调用当前方法 this指向谁
+        Array.prototype.myPush = function (){
+            for (var i = 0; i < arguments.length; i++) {
+                this[this.length] = arguments[i];
+            }
+        }
+        arr1.myPush(5,6,7);
+        console.log(arr1);*/
+
+        // 2.pop shift
+        // pop：剪切最后一位 并且返回被剪切的值
+        // shift：剪切第一位 并且返回被剪切的值
+        // var arr = ['a','b','c'];
+        // //arr.pop();// 无参 'c'
+        // //arr.shift();// 无参 'a'
+        // var strings = arr.reverse();// 数组倒序 返回数组
+        // console.log(strings);
+
+        // 3.splice
+        // (开始项的下标，剪切的长度，剪切以后最后一位添加数据[，号隔开])
+        var arr = ['a','b','c','d'];
+        arr.splice(3,0,1,2,3,4,5,6);
+        console.log(arr);
     </script>
 </body>
-</html>y
+</html>

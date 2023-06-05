@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-32 深拷贝实例、数组基础、数组方法、数组排序</title>
+</head>
+<body>
+    <!-- 课时15 -->
+    <script type="text/javascript">
+        // sort()->按照asclii码表排序
+        // 返回值: 1、负值 a在前面
+        //        2、正值 b在前面
+        //        3、0   保持不动
+        // 说白了就是 a-b 升序
+        var arr = [10,20,53,44,1,5,7,11];
+        arr.sort(function (a,b){
+            return a-b;
+        });
+        console.log(arr);
+
+        var strings = arr.reverse();// 数组倒序 返回数组
+        console.log(arr);
+        console.log(strings);
+    </script>
+</body>
+</html>
