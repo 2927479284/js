@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-31 三目运算、对象克隆、浅拷贝、深拷贝</title>
+</head>
+<body>
+    <!-- 课时14 -->
+    <script type="text/javascript">
+        // 深拷贝(js-31-03)
+        var obj01 = {
+            name:"张三",
+            age:188,
+            sex:'男',
+            son:{ // 浅拷贝这里对象只拷贝了地址值 所以obj02修改 obj01也会修改
+                first:"爸",
+                two:"妈",
+                three:"兄弟"
+            },
+            jihe:{
+                name:'aaa',
+                age:188,
+                car:["benchi",'byd','aodi']
+            }
+        }
+
+        function deepClone(origin,target){
+            var tar = target || {},
+                str = Object.prototype.toString,
+                arrType = '[object Array]';
+
+            for (key in origin){
+                if (origin.hasOwnProperty(key)){
+                    if (typeof(origin[key]) === 'object' && origin[key] !== null){
+                        //如果当前的key是对象并且不为null
+                        if (str.call(origin[key]) === arrType){
+                            // 判断其对象是哪种类型 如果为数组则赋值空数组
+                            tar[key] = [];
+                        }else {
+                            tar[key] = {};
+                        }
+                        // 是对象类型则递归继续拷贝
+                        deepClone(origin[key],tar[key]);
+                    }else {
+                        // 说明其非对象 可以直接拷贝
+                        tar[key] = origin[key];
+                    }
+                }
+            }
+            return tar;
+        }
+        var obj02 = deepClone(obj01);
+
+        console.log(obj01);
+        console.log(obj02);
+
+
+        var arr = [1,2,3,3,4,56];
+        var str = Object.prototype.toString,
+            arrType = '[object Array]';
+
+        console.log(str);
+        var a = str.call('1111');
+        console.log(a);
+    </script>
+</body>
+</html>

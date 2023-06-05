@@ -26,6 +26,17 @@
         function test03(){
             console.log(test03.caller)// 打印谁调用的我
         }
+
+
+
+        var arr = [1,2,3,45,6,8,9]
+        var s = Object.prototype.toString.call(arr);
+        // Object.prototype = {
+        //      toString:function(){
+        //          this.toString(); this->arr
+        //      }
+        // } 改变this指向
+        console.log(s);// 打印[object Array]
     </script>
 </body>
 </html>

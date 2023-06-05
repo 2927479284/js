@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-31 三目运算、对象克隆、浅拷贝、深拷贝</title>
+</head>
+<body>
+    <!-- 课时14 -->
+    <script type="text/javascript">
+        // this指向难题
+
+        var name = "222";
+        var a = {
+            name:"111",
+            say:function (){
+                console.log(this.name);
+            }
+        }
+        var fun = a.say;
+        fun();//222
+        a.say()//111
+        var b = {
+            name:"333",
+            say:function (fun1){
+                fun1();
+                // fun ->
+                // say:function (){
+                //     console.log(this.name);
+                // }
+            }
+        }
+        b.say(a.say);//222
+/*        function f() {
+            console.log(this.name)
+        }
+        b.say(f);*/
+        b.say = a.say;
+        b.say();//333
+
+
+
+        //call  apply
+        function A() {
+            this.name = "张三";
+            this.print1 = function () {
+                console.log(this.name)
+            }
+
+        }
+
+        function B() {
+            this.name = '李四';
+            A.call(this);
+        }
+        var b1 = new B();
+        b1.print1()
+        function Foo() {
+            get = function (){
+                console.log(1)
+            }
+            return this;
+        }
+        Foo.get = function (){
+            console.log(2)
+        }
+        Foo.get();
+        console.log(Foo().get())
+    </script>
+</body>
+</html>y
