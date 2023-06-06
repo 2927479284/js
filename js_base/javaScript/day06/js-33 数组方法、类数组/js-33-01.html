@@ -10,6 +10,21 @@
     <!-- 课时16 -->
     <script type="text/javascript">
 
+        //slice
+        // 开始截取的元素下标，结束截取位置之前
+        // 1,2
+        // [start,end)
+        var arr1 = ['a','b','c','d','e','f','g'];
+        var arr2 = arr1.slice(1,3);//'b','c'
+        console.log(arr2);
+
+        // join/split
+        var arr3 = ['a','b','c','d','e','f','g'];
+        var s = arr3.join('-');//传入什么用什么分割
+        console.log(s);// 将数组通过指定格式分割 组成一段字符串
+        var strings = s.split('-');//通过字符串指定的符号进行转换成数组
+        console.log(strings);
+
     </script>
 </body>
 </html>y

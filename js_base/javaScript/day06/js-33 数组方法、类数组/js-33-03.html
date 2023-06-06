@@ -9,7 +9,18 @@
 <body>
     <!-- 课时16 -->
     <script type="text/javascript">
-
+        // 课后作业 在Array.prototype原型上写一个数组去重的方法
+        Array.prototype.unique = function (){
+            var obj = {};
+            obj.prototype = Array.prototype;
+            for (var i = 0; i < this.length; i++) {
+                obj[this[i]] = this[i];
+            }
+            return obj;
+        }
+        var arr = [1,2,3,1,2,3,1,'a','b','a',3,4,5,5,4,6];
+        var unique = arr.unique();
+        console.log(unique);
     </script>
 </body>
 </html>y

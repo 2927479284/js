@@ -9,6 +9,30 @@
 <body>
     <!-- 课时16 -->
     <script type="text/javascript">
+        // 类数组 没有继承Array.prototype 无push方法
+        function test(){
+            console.log(arguments)
+        }
+        test(1,2,3,4,5);
+
+        var obj = {
+            '0':1,
+            '1':2,
+            '2':3,
+            '3':4,
+            '4':5,
+            length:5,
+            splice: Array.prototype.splice,
+            push: Array.prototype.push
+        }
+        obj.push(6);
+        console.log(obj);
+        // push底层
+        function push(value){
+            this[this.length] = value;
+            this.length++;
+        }
+
 
     </script>
 </body>
