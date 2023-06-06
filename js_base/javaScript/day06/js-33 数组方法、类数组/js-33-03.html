@@ -11,16 +11,29 @@
     <script type="text/javascript">
         // 课后作业 在Array.prototype原型上写一个数组去重的方法
         Array.prototype.unique = function (){
-            var obj = {};
-            obj.prototype = Array.prototype;
+            var obj = {},
+                arr1 = [];
             for (var i = 0; i < this.length; i++) {
-                obj[this[i]] = this[i];
+                if (!obj.hasOwnProperty(this[i])){
+                    obj[this[i]] = this[i];
+                    arr1.push(this[i]);
+                }
             }
-            return obj;
+            return arr1;
         }
         var arr = [1,2,3,1,2,3,1,'a','b','a',3,4,5,5,4,6];
         var unique = arr.unique();
         console.log(unique);
+
+        function  Test(){
+        }
+        Test.prototype.name = "张三";
+        var test = new Test();
+        //hasOwnProperty(propertyName)方法 是用来检测属性是否为对象的自有属性，
+        //如果是，返回true，否者false; 参数propertyName指要检测的属性名；
+        console.log(test.hasOwnProperty('name'));// 当前name为 原型上面的属性 所以返回false
+        var arr1 = [1]
+        console.log(arr1[1]);//undefined
     </script>
 </body>
 </html>y

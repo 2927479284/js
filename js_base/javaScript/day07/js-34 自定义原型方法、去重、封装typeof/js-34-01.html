@@ -9,7 +9,18 @@
 <body>
     <!-- 课时17 -->
     <script type="text/javascript">
+        // 小复习
+        function test(){
+            var argArr = Array.prototype.slice.call(arguments);//将类数组转换成数组
+            // function slice(){
+            //      this->arguments //改变this指向
+            // }
+            console.log(argArr);
+        }
+        test(1,3,2,5,6,5,8,4,5);
 
+        var Str = Object.prototype.toString;
+        console.log(Str.call(new Boolean()));;
     </script>
 </body>
-</html>y
+</html>
