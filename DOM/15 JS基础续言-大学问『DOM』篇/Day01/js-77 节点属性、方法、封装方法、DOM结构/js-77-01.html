@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-77 节点属性、方法、封装方法、DOM结构</title>
+    </head>
+    <!--  DOM课时3  -->
+    <div id="box" class="box" style="background-color: green">
+        我是文本节点
+        <!--我是注释节点-->
+        <a href="">我是超链接</a>
+        <p>我是段落标记</p>
+    </div>
+    <script type="text/javascript">
+        // 1、元素节点->1
+        // 2、属性节点->2
+        // 3、文本节点->3(text)
+        // 4、注释节点->8(comment)
+        // 5、document->9
+        // 6、DocumentFragment->11
+        // 节点属性之nodeName -> 打印的结果是大写 只读
+        var div = document.getElementsByClassName('box')[0];
+        console.log(div.nodeName);//节点原始名
+        console.log(div.nodeName.toLowerCase());//转为小写
+        console.log(div.nodeName.toUpperCase())//转为大写
+        // 节点属性之nodeValue 文本 属性 注释 有value 可写
+
+        // 节点属性之nodeType
+
+        //优化childNodes
+        function elemChildren(node){
+            var children = node.childNodes,
+                arr = [];
+            for (var i = 0; i < children.length; i++) {
+                if (children[i].nodeType === 1){
+                    arr.push(children[i]);
+                }
+            }
+            return arr;
+        }
+
+        console.log(elemChildren(div));
+
+
+    </script>
+</html>

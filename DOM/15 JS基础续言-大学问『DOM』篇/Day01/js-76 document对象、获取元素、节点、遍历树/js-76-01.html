@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-76 document对象、获取元素、节点、遍历树</title>
+    </head>
+    <!--  DOM课时2  -->
+    <body>
+        <h1 class="h1">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </h1>
+    </body>
+    <script type="text/javascript">
+
+        // 性能 不实时  基本上不用
+        //document.querySelector()
+        //document.querySelectorAll()
+
+
+        // 遍历节点树
+        // 节点包含元素
+        // parentNode->父元素节点
+        // childNodes->子元素节点[包括换行 文本节点]
+        // 1、元素节点->1
+        // 2、属性节点->2
+        // 3、文本节点->3
+        // 4、注释节点->8
+        // 5、document->9
+        // 6、DocumentFragment->11
+        var elementsByClassNameElement = document.getElementsByClassName('h1')[0];
+        console.log(elementsByClassNameElement.parentNode);//body
+        console.log(elementsByClassNameElement.childNodes);//9
+        // firstChild->获取当前父节点元素的第一个节点
+        console.log(elementsByClassNameElement.firstChild);
+        // lastChild->获取当前父节点元素的最后一个节点
+        console.log(elementsByClassNameElement.lastChild);
+        // 遍历元素节点
+        console.log(elementsByClassNameElement.parentElement);
+    </script>
+</html>
