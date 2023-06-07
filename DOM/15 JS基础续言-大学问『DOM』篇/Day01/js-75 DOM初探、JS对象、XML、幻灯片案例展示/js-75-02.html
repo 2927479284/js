@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-75 DOM初探、JS对象、XML、幻灯片案例展示</title>
+        <link type="text/css" rel="stylesheet" href="css/slider.css">
+    </head>
+    <!--  轮播图小案例(HTML CSS 立即执行函数(插件化),闭包等问题)  -->
+    <body>
+        <div class="slider-wrap">
+            <div class="slider">
+                <ul class="slider-list">
+                    <li class="slider-item active">
+                        <a href="#">
+                            <img src="./img/1.jpg"  alt="1.jpg"/>
+                        </a>
+                    </li>
+                    <li class="slider-item">
+                        <a href="#">
+                            <img src="./img/2.jpg"  alt="2.jpg"/>
+                        </a>
+                    </li>
+                    <li class="slider-item">
+                        <a href="#">
+                            <img src="./img/3.jpg"  alt="3.jpg"/>
+                        </a>
+                    </li>
+                    <li class="slider-item">
+                        <a href="#">
+                            <img src="./img/4.jpg"  alt="4.jpg"/>
+                        </a>
+                    </li>
+                    <li class="slider-item">
+                        <a href="#">
+                            <img src="./img/5.jpg"  alt="5.jpg"/>
+                        </a>
+                    </li>
+                    <li class="slider-item">
+                        <a href="#">
+                            <img src="./img/6.jpg"  alt="6.jpg"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="thumbs">
+                <ul class="thumbs-list">
+                    <li class="thumbs-item cur">
+                        <a href="#">
+                            <img src="./img/1.jpg" alt="1.jpg">
+                        </a>
+                    </li>
+                    <li class="thumbs-item">
+                        <a href="#">
+                            <img src="./img/2.jpg" alt="2.jpg">
+                        </a>
+                    </li>
+                    <li class="thumbs-item">
+                        <a href="#">
+                            <img src="./img/3.jpg" alt="3.jpg">
+                        </a>
+                    </li>
+                    <li class="thumbs-item">
+                        <a href="#">
+                            <img src="./img/4.jpg" alt="4.jpg">
+                        </a>
+                    </li>
+                    <li class="thumbs-item">
+                        <a href="#">
+                            <img src="./img/5.jpg" alt="5.jpg">
+                        </a>
+                    </li>
+                    <li class="thumbs-item">
+                        <a href="#">
+                            <img src="./img/6.jpg" alt="6.jpg">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+
+    <script src="./js/slider.js" type="text/javascript"></script>
+    <script>
+        new Slider(
+            {
+                sliderItem:"slider-item",
+                thumbsItem:"thumbs-item",
+                cur:"cur",
+                active:"active"
+            }
+        );
+    </script>
+</html>
