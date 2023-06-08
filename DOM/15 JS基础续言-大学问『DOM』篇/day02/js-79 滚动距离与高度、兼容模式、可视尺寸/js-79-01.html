@@ -4,41 +4,157 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>js-75 DOM初探、JS对象、XML、幻灯片案例展示</title>
+        <title>js-79 滚动距离与高度、兼容模式、可视尺寸</title>
     </head>
-    <!--  DOM课时1  -->
+    <!--  DOM课时7  -->
     <body>
-        DOM->Document Object Model 文档对象模型
-        DOM 对象 -> 宿主对象
-        1.本地对象:Native Object
-        Object Function Array String Number Boolean
-        Error EvalError SyntaxError RangeError
-        ReferenceError TypeError URIError
-        Date RegExp
-
-        2.内置对象 Built-in Object
-        Global(概念) Math
-        ECMA[Global] -> isNaN() parseInt() Number decodeURI() encodeURI()
-             -> 属性:Infinity NaN undefined
-
-        本地对象&内置对象都是ECMAScript提供的内部对象
-
-        3.宿主对象 Host Object
-        执行Js脚本的环境提供的对象，浏览器对象，兼容性问题。
-        浏览器对象(BOM)->无规范 document(DOM)->W3C规范
-
-        DOM:通过浏览器提供的方法可以操作HTML&XML
-
-        <div id="div1" class="div">aa</div>
-        <div id="div2" class="div">bb</div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <script typeof="text/javascript">
-            // 获取标签 绑定事件
-            var div1 = document.getElementById('div1');
-            console.log(div1);
+            // 可视窗口 滚动条
+            // 查看滚动条的距离
+            // 常规：window.pageXOffset/window.pageYOffset
+            // IE9/IE8以下：
+            // document.body.scrollLeft/scrollTop
+            // document.documentElement.scrollLeft/scrollTop
+            // 不常见：window.scrollX/scrollY
 
-            div1.onclick = function (){
-                console.log(div1.innerText);
+
+            // 兼容函数写法
+            function getScrollOffset(){
+                var obj = {};
+                if (window.pageXOffset){
+                    obj.left = window.pageXOffset;
+                    obj.top = window.pageYOffset;
+                }else {
+                    // document.documentElement.scrollLeft & document.documentElement.scrollTop
+                    // document.body.scrollLeft & document.body.scrollTop
+                    // 上述两个不可能同时出现 所以直接加即可(版本问题)
+                    obj.left = document.documentElement.scrollLeft + document.body.scrollLeft;
+                    obj.top = document.documentElement.scrollTop + document.body.scrollTop;
+                }
+                return obj;
             }
+
+            console.log(getScrollOffset());
+
         </script>
     </body>
 </html>

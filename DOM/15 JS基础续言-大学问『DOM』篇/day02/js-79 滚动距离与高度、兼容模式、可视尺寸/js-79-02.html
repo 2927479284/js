@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-79 滚动距离与高度、兼容模式、可视尺寸</title>
+    </head>
+    <!--  DOM课时7  -->
+    <body>
+        <script type="text/javascript">
+            // 浏览器的怪异模式和标准模式
+            // <!DOCTYPE html> 遵循W3C规范（标准模式）
+            // 反之没写就是浏览器自己的怪异模式
+
+            // 获取浏览器可视区域的尺寸(窗口的宽高)
+            // 常规：window.innerWidth/window.innerHeight
+            // IE9/IE8及以下：
+            // 标准：document.documentElement.clientWidth/document.documentElement.clientHeight;
+            // 怪异：document.body.clientWidth/document.body.clientHeight
+
+            //outerWidth outerHeight
+            //兼容写法
+            function getViewportSize(){
+                var obj = {};
+                if (window.innerWidth){
+                    obj.width = window.innerWidth;
+                    obj.height = window.innerHeight;
+                }else {
+                    if (document.compatMode === 'BackCompat'){
+                        obj.width = document.body.clientWidth;
+                        obj.height = document.body.clientHeight;
+                    }else {
+                        obj.width = document.documentElement.clientWidth;
+                        obj.height = document.documentElement.clientHeight;
+                    }
+                }
+                return obj;
+            }
+        </script>
+    </body>
+</html>
