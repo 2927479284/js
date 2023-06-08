@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-80 读写样式属性、操作伪元素、元素运动初探</title>
+        <style>
+
+            a{
+                text-decoration: none;
+            }
+
+            ul{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+
+            .dropdown{
+                position: relative;
+                width: 200px;
+                height: 50px;
+                background-color: #000;
+            }
+
+            .dropdown a{
+                display: block;
+            }
+
+            .dropdown .list{
+                display: none;
+            }
+            /*.dropdown:hover .list{*/
+            /*    display: block;*/
+            /*}*/
+
+
+            /*伪元素*/
+            .dropdown::after{
+                content: '';
+                display: table;
+                position: absolute;
+                top: 20px;
+                right: 15px;
+                width: 15px;
+                height: 15px;
+                background-image: url("./img/arrow-down.png");
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
+
+            .dropdown.up:after{
+                background-image: url("./img/arrow-top.png");
+            }
+
+            .dropdown .main{
+                display: block;
+                height: 100%;
+                text-align: center;
+                line-height: 50px;
+                color: #fff;
+            }
+
+            .dropdown .list-item{
+                height: 40px;
+                background-color: #333;
+            }
+
+            .dropdown .list-item a{
+                height: 100%;
+                color: #999;
+                text-align: center;
+                line-height: 40px;
+            }
+
+
+        </style>
+    </head>
+    <!--  DOM课时8  -->
+    <body>
+        <div class="dropdown">
+            <a href="javascript:;" class="main">下拉菜单</a>
+            <ul class="list">
+                <li class="list-item"><a href="#">第一个项目</a></li>
+                <li class="list-item"><a href="#">第二个项目</a></li>
+                <li class="list-item"><a href="#">第三个项目</a></li>
+                <li class="list-item"><a href="#">第四个项目</a></li>
+                <li class="list-item"><a href="#">第五个项目</a></li>
+            </ul>
+        </div>
+        <script typeof="text/javascript">
+            // js小案例
+            // 直接显示
+            var dropdown = document.getElementsByClassName('dropdown')[0],
+                oList = elemChildren(dropdown)[1];
+            dropdown.onmouseenter = function (){
+                oList.style.display = 'block';
+                dropdown.className += ' up';
+            }
+
+            dropdown.onmouseleave = function (){
+                oList.style.display = 'none';
+                dropdown.className = 'dropdown';
+            }
+
+            // 获取元素节点方法封装
+            function elemChildren(node){
+                var obj = {
+                    length:'',
+                    push:Array.prototype.push,
+                    splice:Array.prototype.splice
+                };
+                var childNodes = node.childNodes;
+                for (var i = 0; i < childNodes.length; i++) {
+                    if (childNodes[i].nodeType  === 1){
+                        //说明是元素节点
+                        obj.push(childNodes[i]);
+                    }
+                }
+                return obj;
+            }
+        </script>
+    </body>
+</html>

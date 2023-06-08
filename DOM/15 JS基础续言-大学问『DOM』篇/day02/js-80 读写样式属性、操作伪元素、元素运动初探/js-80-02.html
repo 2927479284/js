@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-80 读写样式属性、操作伪元素、元素运动初探</title>
+        <style>
+            .div1{
+                width: 100px;
+                height: 100px;
+                border: 1px solid green;
+            }
+
+            .div1:after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-color: red;
+            }
+
+            .div1.active::after{
+                background-color: aqua;
+            }
+        </style>
+    </head>
+    <!--  DOM课时8  -->
+    <body>
+        <div class="div1"></div>
+        <script typeof="text/javascript">
+
+            var div = document.getElementsByClassName('div1')[0];
+            // 查看计算样式
+            // window.getComputedStyle(div,null)[prop]
+            // window.getComputedStyle(div,null).prop
+            // IE8及以下不支持
+            // elem.currentStyle
+
+            // window.getComputedStyle(elem,null)
+            // 伪元素 只读 如何操作伪元素？案例
+            // 上述null值代表：伪元素(after等等)[prop] 获取对应的具体的属性
+
+            // 兼容写法
+            function getStyles(elem,prop){
+                if (window.getComputedStyle){
+                    if (prop){
+                        return window.getComputedStyle(elem,null)[prop];
+                    }else {
+                        return window.getComputedStyle(elem,null);
+                    }
+                }else {
+                    if (prop){
+                        return elem.currentStyle[prop];
+                    }else {
+                        return elem.currentStyle;
+                    }
+                }
+            }
+            /**
+             * 操作伪元素
+             */
+            div.onclick = function (){
+                this.className += ' active';
+            }
+
+        </script>
+    </body>
+</html>
