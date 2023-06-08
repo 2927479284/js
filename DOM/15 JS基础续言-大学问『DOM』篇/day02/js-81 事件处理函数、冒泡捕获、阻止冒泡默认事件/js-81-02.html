@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-81 事件处理函数、冒泡捕获、阻止冒泡默认事件</title>
+        <style>
+            button{
+                width: 100px;
+                height: 100px;
+            }
+        </style>
+    </head>
+    <!--  DOM课时9  -->
+    <body>
+        <button>我是按钮</button>
+    </body>
+
+    <script typeof="text/javascript">
+        // 封装绑定事件  兼容模式
+        var button =  document.getElementsByTagName('button')[0];
+
+
+        function addEvent(el,type,fn) {
+            if(el.addEventListener){
+                el.addEventListener(type,fn,false);
+            }else if(el.attachEvent){
+                el.attachEvent('on'+type,function () {
+                    fn.call(el);
+                })
+            }else{
+                el['on'+type] = fn;
+            }
+        }
+
+        addEvent(button,'click',function (params) {
+            console.log('绑定事件成功');
+        })
+    </script>
+</html>
