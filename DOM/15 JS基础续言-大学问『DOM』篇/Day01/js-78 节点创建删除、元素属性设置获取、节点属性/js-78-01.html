@@ -8,7 +8,32 @@
     </head>
     <!--  DOM课时4  -->
     <body>
+        <div>
+            <h1>我是H1</h1>
+            <p>我是P</p>
+            <a href="#">我是超链接</a>
+        </div>
 
     </body>
+
+    <script type="text/javascript">
+        // 元素节点的增删改查
+        // 创建元素
+        // Document.prototype上的方法
+        var htmlDivElement = document.createElement('div');
+        htmlDivElement.innerText = '6666';
+        //元素写进网页中
+        document.body.appendChild(htmlDivElement);
+
+        // 父级删除子级元素 只是在dom中删除 内存中并未删除
+        var div = document.getElementsByTagName('div')[0];
+        var p = document.getElementsByTagName('p')[0];
+        console.log(div.removeChild(p));
+        //p.remove() 这种方法 自己删除自己才是从内存 dom中删除
+
+        // 重要 createDocumentFragment
+        // 创建文档片段（碎片）
+        // 列表专用
+        var documentFragment = document.createDocumentFragment();
+    </script>
 </html>
-o?
