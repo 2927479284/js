@@ -1,0 +1,43 @@
+.list-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 44px;
+    background-color: blanchedalmond;
+    text-align: center;
+    line-height: 44px;
+}
+
+.container{
+    padding: 15px;
+    line-height: 25px;
+}
+
+.round{
+    display: block;
+    position: fixed;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    opacity: .6;
+}
+.s-top-btn {
+    display: none;
+    bottom: 100px;
+    background: url(../img/rocket.png) no-repeat 0 0/100% 100%;
+}
+.s-top-btn:hover{
+    opacity: 1;
+}
+
+.s-play-btn{
+    bottom: 25px;
+    background: orange url(../img/play.png) no-repeat 15px 15px/30px 30px;
+}
+
+.s-play-btn:hover{
+    opacity: 1;
+}

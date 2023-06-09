@@ -1,0 +1,33 @@
+/* 标签样式初始化 */
+body{
+    margin: 0;
+}
+div{
+    box-sizing: border-box; /*https://www.w3school.com.cn/css/css3_box-sizing.asp*/
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+    margin: 0;
+    font-weight: normal;
+    list-style: none;
+}
+
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img{
+    height: 100%;
+}
+a{
+    text-decoration: none;
+}

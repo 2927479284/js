@@ -17,7 +17,9 @@
             _self.sTopBtnShow.call(_self);
         });
         addEvent(this.playBtn,"click",function(){
+            console.log('1')
             _self.setAutoPlay.call(_self.playBtn);
+
         });
     }
     AutoReader.prototype = {
@@ -27,6 +29,8 @@
            if(sHeight === wHeight + sTop){
                 return;
            }
+            console.log('2')
+            console.log(playing)
            if(!playing){
                 t = setInterval(function(){
                     var sTop = getScrollOffset().top;
@@ -42,7 +46,7 @@
                 playing = true;
            }else{
             clearInterval(t);
-            _self.style.backgroundImage = 'url(./img/play.png)';
+               this.style.backgroundImage = 'url(./img/play.png)';
             playing = false;
            }
         },

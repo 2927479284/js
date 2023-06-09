@@ -1,0 +1,62 @@
+.list-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 44px;
+    background-color: blanchedalmond;
+    text-align: center;
+    line-height: 44px;
+}
+
+.list-container{
+    margin-top: 44px;
+}
+.bk-list .bk-item{
+    position: relative;
+    height: 150px;
+    border-bottom: 1px solid #ddd;
+}
+.bk-list .bk-item .bk-item-lk{
+    display: block;
+    height: 100%;
+}
+.bk-list .bk-item .bk-item-pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 150px;
+    padding: 10px;
+}
+.bk-list .bk-item .bk-item-info {
+    height: 100%;
+    margin-left: 117px;
+    color: #424242;
+}
+.bk-list .bk-item .bk-item-info h2,
+.bk-list .bk-item .bk-item-info p{
+    margin-top: 15px;
+}
+.bk-list .bk-item .bk-item-info .intro{
+    overflow: hidden; /*溢出隐藏*/
+    white-space: nowrap; /*规定文本不进行换行*/
+    text-overflow: ellipsis; /*当对象内文本溢出时显示省略标记（...）*/
+    color: #999;
+}
+
+
+.s-top-btn{
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 15px;
+    width: 60px;
+    height: 60px;
+    background: url("../img/rocket.png") no-repeat 0 0/100% 100%;
+    border-radius: 50%;
+    opacity: .6;
+}
+.s-top-btn:hover{
+    opacity: 1;
+}
