@@ -44,25 +44,6 @@
                 console.log('three(冒泡)')},false);
             two.addEventListener('click',function (){
                 console.log('two(冒泡)')},false);
-            one.addEventListener('click',function (){
-                console.log('one目标(冒泡)')},false);
-
-            three.addEventListener('click',function (){
-                console.log('three(捕获)')},true);
-            two.addEventListener('click',function (){
-                console.log('two(捕获)')},true);
-            one.addEventListener('click',function (){
-                console.log('one目标(捕获)')},true);
-
-            // 打印如下结果
-            /**
-             * three(捕获)
-             * two(捕获)
-             * one目标(捕获)
-             * one目标(冒泡)
-             * two(冒泡)
-             * three(冒泡)
-             */
 
         </script>
     </body>

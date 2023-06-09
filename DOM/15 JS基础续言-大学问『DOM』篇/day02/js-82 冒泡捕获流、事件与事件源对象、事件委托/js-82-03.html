@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-82 冒泡捕获流、事件与事件源对象、事件委托</title>
+
+        <style>
+        </style>
+    </head>
+    <!--  DOM课时10  -->
+    <body>
+
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+        </ul>
+        <script typeof="text/javascript">
+            // 事件源对象 target
+            var oUl = document.getElementsByTagName('ul')[0],
+                oLi = document.getElementsByTagName('li');
+
+            // 这里只能提供函数引用名称 不能加() 加了等于执行
+            oUl.addEventListener('click',MyClick,false);
+            /**
+             * 点击事件执行该方法时会传入一个事件源对象
+             * @param event 事件源
+             */
+            function MyClick(event){
+                var e = event || window.event,
+                    tar = event.target || event.srcElement;
+                console.log(tar.innerText)
+                // 打印当前的i(不适用for循环)
+                // 当前事件源List 就是 oLi 当前元素对象
+                var index = Array.prototype.indexOf.call(oLi,tar);
+                console.log("下标(索引)："+index);
+            }
+        </script>
+    </body>
+</html>
