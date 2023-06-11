@@ -15,19 +15,22 @@
         <div class="wrap">
             <div class="list-hd">
                 <h2>ToDolist</h2>
-                <a href="javascript:;" class="j-show-input fa fa-plus"></a>
+                <a href="javascript:;" class="j-plus-btn fa fa-plus"></a>
             </div>
             <div class="input-wrap">
-                <div class="input-bd">
-                    <input type="text">
+                <div class="text-input">
+                    <input type="text" id="itemContent">
                 </div>
-                <div class="btn-bd">
-                    <button>增加项目</button>
+                <div class="add-btn">
+                    <button class="j-add-item">增加项目</button>
                 </div>
             </div>
             <div class="list-wrap">
-                <ul class="list"></ul>
+                <ul class="item-list"></ul>
             </div>
+
         </div>
     </body>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 </html>
