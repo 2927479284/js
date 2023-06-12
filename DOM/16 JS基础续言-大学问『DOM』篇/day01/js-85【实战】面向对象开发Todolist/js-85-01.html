@@ -11,7 +11,13 @@
     </head>
     <!--  DOM课时12  -->
     <body>
-    <div class="wrap">
+    <div class="wrap" data-config='{
+        "plusBtn": "j-plus-btn",
+        "inputArea": "input-wrap",
+        "addBtn": "j-add-item",
+        "list": "item-list",
+        "itemClass": "item"
+    }'>
         <div class="list-hd">
             <h2>ToDolist</h2>
             <a href="javascript:;" class="j-plus-btn fa fa-plus"></a>
@@ -32,4 +38,8 @@
     </body>
     <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+
+    <script type="text/javascript">
+        new TodoList();
+    </script>
 </html>
