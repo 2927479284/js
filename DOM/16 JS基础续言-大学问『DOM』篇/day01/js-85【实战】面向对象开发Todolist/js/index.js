@@ -22,25 +22,20 @@ var TodoList = (function (node){
         }
         // set配置项
         this.setConfig();
-
         // 配置显示输入框按钮 监听事件
         addEvent(this.plusBtn,'click',function (){
             // 这里的this 指向的是 plusBtn
             _self.showInput();
         });
-
         // 新增/编辑 数据
         addEvent(this.addBtn,'click',function (){
             console.log('click');
             _self.addBtnClick();
         });
-
         addEvent(this.oList,'click',function (event){
             _self.oListClick(event);
         })
-
     }
-
     TodoList.prototype = {
         getConfig: function (){
             return JSON.parse(this.node.getAttribute('data-config'));
@@ -166,7 +161,6 @@ var TodoList = (function (node){
             this.content.value = '';
         }
     }
-
     function itemTpl(text){
         return(
             '<p class="item-content">'+ text +'</p>'+
@@ -176,6 +170,5 @@ var TodoList = (function (node){
             '</div>'
         );
     }
-
     return TodoList;
 })(document.getElementsByClassName('wrap')[0]);

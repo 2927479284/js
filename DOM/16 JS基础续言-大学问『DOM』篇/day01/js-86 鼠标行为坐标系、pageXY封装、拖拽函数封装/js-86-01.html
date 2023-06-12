@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-86 鼠标行为坐标系、pageXY封装、拖拽函数封装</title>
+    </head>
+    <!--  DOM课时12 事件2  -->
+    <body>
+
+
+
+
+
+
+        <script type="text/javascript" src="js/utils.js"></script>
+        <script typeof="text/javascript">
+            // 鼠标行为 -> 坐标系
+
+            // clientX/Y -> 鼠标位置相对于当前可视区域的坐标
+            //              （不包括滚动条的距离）
+
+            // layerX/Y -> 同pageX/Y相同 ie11以下同clientX/Y
+
+            // screenX/Y -> 鼠标位置相对于屏幕的坐标
+
+            // x/y -> 同clientX/Y 相同 FF不支持(火狐低版本不支持)
+
+            // pageX/pageY ->【IE9以下不支持】 鼠标位置相对于当前文档的坐标(包含滚动条的距离)
+
+            // offsetX/Y -> 鼠标位置块元素的坐标 （包含边框 safari不包括）
+            addEvent(document,'click',function (e){
+                console.log(e.clientX,e.clientY);
+            });
+
+            pagePos()
+        </script>
+    </body>
+</html>

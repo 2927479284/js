@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-86 鼠标行为坐标系、pageXY封装、拖拽函数封装</title>
+
+        <style type="text/css">
+            body{
+                margin: 0;
+            }
+
+            .box{
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                background-color: orange;
+            }
+        </style>
+    </head>
+    <!--  DOM课时12 事件2  -->
+    <body>
+
+        <div class="box"></div>
+
+        <script type="text/javascript" src="js/utils.js"></script>
+        <script typeof="text/javascript">
+            var box = document.getElementsByClassName('box')[0];
+/*            box.onmousedown = function (e) {
+                x = pagePos(e).x - getStyles(box,'left');
+                y = pagePos(e).y - getStyles(box,'top');
+                document.onmousemove = function (e) {
+                    box.style.left = pagePos(e).x - x + 'px';
+                    box.style.top = pagePos(e).y - y + 'px';
+                }
+                document.onmouseup = function (e){
+                    this.onmousedown = null;
+                    this.onmousemove = null;
+                }
+            }*/
+
+            elemDrag(box)
+
+            /**
+             * 封装函数 自动拖拽
+             * @param elem
+             */
+            function elemDrag(elem) {
+                var x,y;
+                addEvent(elem, 'mousedown', function (e) {
+                    x = pagePos(e).x - getStyles(elem, 'left');
+                    y = pagePos(e).y - getStyles(elem, 'top');
+                    addEvent(document, 'mousemove', mouseMove);
+                    addEvent(document, 'mouseup', mouseUp);
+                    cancelBubble(e);
+                    preventDefaultEvent(e);
+                });
+
+                function mouseMove(e) {
+                    elem.style.left = pagePos(e).x - x + 'px';
+                    elem.style.top = pagePos(e).y - y + 'px';
+                }
+
+                function mouseUp(e) {
+                    removeEvent(document, 'mousemove', mouseMove);
+                    removeEvent(document, 'mouseup', mouseUp);
+                }
+            }
+        </script>
+    </body>
+</html>

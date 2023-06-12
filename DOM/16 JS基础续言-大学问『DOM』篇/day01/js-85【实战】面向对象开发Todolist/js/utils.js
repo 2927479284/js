@@ -59,7 +59,7 @@ function elemParent(node,n){
 }
 
 /**
- * 获取滚动条距离
+ * 获取滚动条距离（兼容写法）
  * @returns {{top: number, left: number}}
  */
 function getScrollOffset(){
@@ -118,5 +118,84 @@ function getScrollSize(){
             width: document.documentElement.scrollWidth,
             height: document.documentElement.scrollHeight
         }
+    }
+}
+
+/**
+ * 获取当前鼠标的位置
+ * @param e
+ * @returns {{x: number, y: number}}
+ */
+function pagePos(e){
+    var sLeft = getScrollOffset().left,
+        sTop = getScrollOffset().top,
+        cLeft = document.documentElement.clientLeft || 0,
+        cTop = document.documentElement.clientTop || 0;
+
+    return{
+        x: e.clientX + sLeft - cLeft,
+        y: e.clientY + sTop - cTop
+    }
+}
+
+/**
+ * 查看当前元素的样式
+ * @param elem
+ * @param prop
+ * @returns {*|CSSStyleDeclaration}
+ */
+function getStyles(elem,prop){
+    if (window.getComputedStyle){
+        if (prop){
+            return parseInt(window.getComputedStyle(elem,null)[prop]);
+        }else {
+            return window.getComputedStyle(elem,null);
+        }
+    }else {
+        if (prop){
+            return parseInt(elem.currentStyle[prop]);
+        }else {
+            return elem.currentStyle;
+        }
+    }
+}
+
+/**
+ * 删除事件 兼容写法
+ * @param elem 元素
+ * @param type 事件类型
+ * @param fn 函数
+ */
+function removeEvent(elem,type,fn){
+    if (elem.addEventListener){
+        elem.removeEventListener(type,fn,false);
+    }else if(elem.attachEvent){
+        elem.detachEvent('on'+type,fn);
+    }else {
+        elem['on' + type] = null;
+    }
+}
+
+/**
+ * 去除冒泡 兼容写法
+ * @param e
+ */
+function cancelBubble(e) {
+    if (e.stopPropagation){
+        e.stopPropagation();
+    }else {
+        e.cancelBubble = true;
+    }
+}
+
+/**
+ * 去除默认事件 兼容写法
+ * @param e
+ */
+function preventDefaultEvent(e){
+    if (e.preventDefault){
+        e.preventDefault();
+    }else {
+        e.returnValue = false;
     }
 }
