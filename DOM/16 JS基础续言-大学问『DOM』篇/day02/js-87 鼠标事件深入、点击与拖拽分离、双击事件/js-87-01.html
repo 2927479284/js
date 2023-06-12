@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-87 鼠标事件深入、点击与拖拽分离、双击事件</title>
+        <style type="text/css">
+            body{
+                margin: 0;
+            }
+            a{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100px;
+                height: 100px;
+                background-color: orange;
+            }
+        </style>
+    </head>
+    <!--  DOM课时13  -->
+    <body>
+
+
+        <a href="javascript:;"></a>
+
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/utils.js"></script>
+        <script typeof="text/javascript">
+            var a = document.getElementsByTagName('a')[0];
+            a.dragNclick(function (){
+                window.open("https://www.baidu.com/")
+            });
+        </script>
+    </body>
+</html>
