@@ -8,6 +8,67 @@
         <title>js-100 正向预查、贪婪与非贪婪模式、replace方法</title>
     </head>
     <body>
-        
+
+        <script type="text/javascript">
+            // 正向预查
+            var reg1 = /(a)\1\1\1/gim,
+                str1 = 'bbaaaaccaaaabbdbaaaaaaaa';
+            console.log(str1.match(reg1));
+
+            // 贪婪模式
+            var reg2 = /{{.*}}/gim,
+                str2 = 'abcd{{efg}}abcd{{xyz}}';
+            console.log(str2.match(reg2));
+            // 非贪婪模式
+            var reg3 = /{{.*?}}/gim,
+                str3 = 'abcd{{efg}}abcd{{xyz}}';
+            console.log(str3.match(reg3));
+
+
+            // replace
+            var str4 = 'jsplusplus',
+                reg4 = /plus/g;//必须加g
+            console.log(str4.replace(reg4, '++'));
+
+
+            // replace xxyy -> yyxx
+            var reg5 = /(\w)\1(\w)\2/g,
+                str5 = 'aabbccdd';// 变成bbaaddcc
+            //console.log(str5.replace(reg5,'$2$2$1$1'));//bbaaddcc
+            var st = str5.replace(reg5,function (s,s1,s2) {
+                console.log(s,s1,s2);
+                return s2+s2+s1+s1;
+            });
+            console.log(st);
+
+            // js-plus-plus -> jsPlusPlus
+            var reg6 = /-(\w)/g,
+                str6 = 'js-plus-plus';
+            var st1 = str6.replace(reg6,function (s,s1) {
+                console.log(s,s1);
+                return s1.toUpperCase();
+            });
+            console.log(st1);
+
+
+            // xxyyzz -> XxYyZz
+            var reg7 = /(\w)\1(\w)\2(\w)\3/g,
+                str7 = 'xxyyzz';
+            console.log(str7.match(reg7));
+
+            var st2 = str7.replace(reg7,function (s,s1,s2,s3) {
+                return s1.toUpperCase()+s1+s2.toUpperCase()+s2+s3.toUpperCase()+s3;
+            });
+            console.log(st2);
+
+
+            // aaaabbcccdddeeekkkfffkll -> abcdekfl
+            var reg8 = /(\w)\1*/g,
+                str8 = 'aaaabbcccdddeeekkkfffkll';
+            console.log(str8.match(reg8));
+
+            var st3 = str8.replace(reg8,'$1');
+            console.log(st3);
+        </script>
     </body>
 </html>
