@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>js-97 转义符号与字符、正则基础、修饰元字符</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // 转义字符 -> 转换意义 改变意义
+            // 转义符号    转义字符
+            //   \          \字符
+
+            // 这里会将 正则基础定义为一个变量 而你又需要文本里面出现 "正则基础" 这种数据 则需要转义
+            //var str = "转义符号与字符、"正则基础"、修饰元字符";
+            var str = "转义符号与字符、\"正则基础\"、修饰元字符";
+
+            // \n \r \t
+            // \n linux换行 在html里面会被识别成空格
+            // \r mac 换行 同上
+            // \t -> 制表符 类似于TAB 是四个空格 但在html中是一个空格
+
+            var str2 = "js-97 转义符号与字符\t正则基础、修饰元字符";
+            document.write(str2);
+        </script>
+    </body>
+</html>

@@ -20,14 +20,9 @@
         var tar = event.target,
             oParent = getParent(tar,'li'),
             thisIdx = Array.prototype.indexOf.call(oItems,oParent);
-
-        console.log(oParent);
-        console.log(oItems[thisIdx]);
-        console.log(oItems[curIdx]);
         if (curIdx !== thisIdx){
             oItems[curIdx].className = 'list-item';
             curIdx = thisIdx;
-            console.log(oItems[curIdx]);
             oItems[curIdx].className += ' active';
         }
 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>js-97 转义符号与字符、正则基础、修饰元字符</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // 正则表达式
+
+            /**
+             * g->全局
+             * i->不区分大小写
+             * m->多行模式
+             * @type {RegExp}
+             */
+            var reg01 = new RegExp('test','gim'),
+                str01 = 'This is a test';
+            // 判断其文本中是否包含当前正则对象中的test  包含则输出true 反之则是 false
+            console.log(reg01.test(str01));
+
+            var reg02 = /test/gim,
+                str02 = 'This is a test \nThis is a test';
+
+            console.log(str02.match(reg02));
+
+
+            // 表达式[]
+            var re03 = /[wx][xy][z]/gim,
+                str03 = 'wxyz';
+            console.log(str03.match(re03));// ['xyz']
+
+
+            var re04 = /[0-z][A-z][a-z]/,// [^0]代表非0
+                str04 = 'fsauirh1oijrkfposajhf89UFH32OIj39ijifsdfS?DG';
+            console.log(str04.match(re04));
+
+            // 元字符 正则自带的转义字符
+            // \w === [0-9A-z_];
+            // \W === [^\w];
+
+            // \d === [0-9];
+            // \D ==== [^\d];
+            var re05 = /\d/,
+                str05 = '  ';
+
+            // \s === [\r\n\t\v\f];
+            // \r -> 回车
+            // \n -> 换行
+            // \t -> 制表符
+            // \v -> 垂直换行符
+            // \f -> 换页符
+            // \S === [^\s];
+
+            // \b 单词边界
+            // \B 非单词边界
+            //
+            // This is a;
+
+            // .可以匹配除了换行跟回车的所有字符
+        </script>
+    </body>
+</html>
