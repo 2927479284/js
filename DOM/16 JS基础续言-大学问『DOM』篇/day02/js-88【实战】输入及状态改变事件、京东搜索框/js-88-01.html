@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>js-88【实战】输入及状态改变事件、京东搜索框</title>
+    </head>
+    <!--  DOM课时14  -->
+    <body>
+
+        <input class="input" />
+        <script typeof="text/javascript">
+
+            var input = document.getElementsByClassName('input')[0];
+
+            // onchange -> 失去焦点的时候 值如果发生改变 则会触发当前事件
+            // oninput -> 输入数据的时候返回当前完整数据
+            input.onchange = function (){
+                console.log(this.value)
+            }
+        </script>
+    </body>
+</html>
