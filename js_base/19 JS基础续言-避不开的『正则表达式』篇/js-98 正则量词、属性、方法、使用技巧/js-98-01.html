@@ -8,6 +8,65 @@
         <title>js-98 正则量词、属性、方法、使用技巧</title>
     </head>
     <body>
-        
+
+
+        <script type="text/javascript">
+            // 量词
+            // n+ {1,正无穷}
+            // \w === [0-9A-z_];
+            var reg1 = /\w+/gim,
+                str = 'adsaf324rr2';
+            // 正则遵循两个原则：
+            // 1、不回头(已经匹配的数据无法再次匹配)
+            // 2、贪婪模式(能匹配上多个，绝不匹配少个)
+            console.log(str.match(reg1));
+
+
+            // n* {0,正无穷}
+            var reg2 = /\w*/gim,
+                str2 = 'adsaf324rr,2';
+            console.log(str2.match(reg2));
+
+            // n? {0,1}
+            var reg3 = /\w?/gim,
+                str3 = 'adsaf324rr_2';
+            console.log(str3.match(reg3));
+
+            // n{1,2}
+            var reg4 = /\w{1,2}/g,
+                str4 = 'abcdefg';
+            console.log(str4.match(reg4));
+
+
+            // ^n 匹配任何以n开头的字符串
+            var reg5 = /^ab/gim,
+                str5 = 'abcdefg\nabababdcbd';
+            console.log(str5.match(reg5));
+
+
+            // n$ 匹配任何以n结尾的字符串
+            var reg6 = /g$/gim,
+                str6 = 'abcdefg\nabababdcbd';
+            console.log(str6.match(reg6));
+
+            var reg7 = /^abcd.*abcd$/gim,
+                str7 = 'abcd1321423423abcd';
+            console.log(str7.match(reg7));
+
+
+            // ?=n 匹配任何其后面紧跟着指定字符串n的字符串
+            // ?!n 匹配任何其后面不紧跟指定字符串n
+            var reg8 = /a(?=b)/gim,
+                str8 = 'abcd1321423423abcd';
+            console.log(str8.match(reg8));
+
+
+            // 匹配指定格式的例如：xxxx xxyy
+            // 子表达式  反向引用
+            // 子表达式：(a)\1\1\1 这里的1代表反向引用第几个表达式
+            var reg9 = /(a)\1\1\1/gim,
+                str9 = 'bbaaaaccaaaabbdbaaaaaaaa';
+            console.log(str9.match(reg9));
+        </script>
     </body>
 </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>js-98 正则量词、属性、方法、使用技巧</title>
+    </head>
+    <body>
+
+
+        <script type="text/javascript">
+
+            // 正则属性 gim
+            var reg1 = /(a)\1\1\1/gim,
+                str1 = 'bbaaaaccaaaabbdbaaaaaaaa';
+            console.log(str1.match(reg1));
+
+            // 正则方法 exec 一轮一轮匹配
+            // 打印类数组exec返回值
+            // 正则对象.lastIndex 值可以修改 但是不影响exec匹配
+            // 如果值出现错误 exec会在下一次执行中将lastIndex修改为正确的值
+            var reg2 = /(a)\1/gim,
+                str2 = 'bbaaaaccaaaabbdbaaaaaaaa';
+            console.log(reg2.exec(str2));
+            console.log(reg2.lastIndex);
+        </script>
+    </body>
+</html>
