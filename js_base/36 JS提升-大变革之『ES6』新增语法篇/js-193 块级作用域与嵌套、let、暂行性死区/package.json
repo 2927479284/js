@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d lib",
-    "script-name": "babel-node ./src/app.js"
+    "build": "babel app.js -o bundle.js",
+    "script-name": "babel-node app.js"
   },
   "author": "",
   "license": "ISC",

@@ -9,7 +9,7 @@
 <body>
 
   <script type="text/javascript">
-
+/*
     var obj = {
       name: "张三",
       foo: (a)=>{
@@ -17,7 +17,56 @@
       }
     }
 
-    obj.foo("1111");
+    obj.foo("1111");*/
+
+    // var obj = {
+    //   name: "zs",
+    //   foo: ()=>{
+    //     return () => {
+    //       console.log(this);// this->window
+    //     };
+    //   }
+    // }
+    // var test1 = obj.foo();
+    // test1();
+
+    // var obj = {
+    //   name: "zs",
+    //   foo: ()=>{
+    //     console.log(this)
+    //   }
+    // }
+    // obj.foo();
+
+    // var obj = {
+    //   name: "zs",
+    //   foo:function (){
+    //     return ()=> {
+    //       console.log(this);// this -> obj
+    //     }
+    //   }
+    // }
+    // var test1 = obj.foo();
+    // test1();
+
+
+    // var obj = {
+    //   foo:function (){
+    //     console.log(this);// this -> window
+    //     return ()=> {
+    //       console.log(this);// this -> window
+    //     }
+    //   }
+    // }
+    // var test1 = obj.foo;
+    // test1();
+    // obj.foo();
+
+    // function test(){
+    //   console.log(this);// this->window
+    // }
+    // test();
+
   </script>
 
 </body>
