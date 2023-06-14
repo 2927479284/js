@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script type="text/javascript">
+
+    var test1 = function (name,age){
+      // 存在this
+      console.log(name,age);
+    }
+
+    // 箭头函数的用法
+    var test2 = (name,age)=>{
+      // 不存在this
+      // 不能作为构造函数使用
+      //
+      console.log(name,age);
+    }
+    test2(1,1);
+
+    function foo() {
+      console.log("foo", this)
+    }
+
+    foo()
+    foo.apply("aaa")
+  </script>
+
+</body>
+</html>

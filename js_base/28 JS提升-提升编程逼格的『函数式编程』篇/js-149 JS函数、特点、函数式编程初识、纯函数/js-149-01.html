@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>js-149 JS函数、特点、函数式编程初识、纯函数</title>
+    </head>
+    <body>
+
+
+        <script type="text/javascript">
+            // js 编程特点
+            // 函数式编程 & 面向对象编程
+            // 数据类型不确定 弱语言
+            // 优点：编程灵活
+            // 缺点：不可控
+
+            // 面向对象与函数式关系
+
+            // 复杂的this指向
+            function test() {
+                return function () {
+                    return 1;
+                }
+            }
+            var test1 = test();
+            console.log(test1());
+        </script>
+    </body>
+</html>
