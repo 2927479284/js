@@ -74,8 +74,10 @@ function myFreeze(obj){
 }
 myFreeze(obj);
 obj.son.b = 'b';// 无法添加新属性，会静默失败，不会报错
-obj.arr.push(1);// TypeError: Cannot add property 1, object is not extensible
+//obj.arr.push(1);// TypeError: Cannot add property 1, object is not extensible
 //尝试给 obj.son 添加新属性 b 时，由于 obj.son 已经被冻结，
 // 静默失败且不会报错。而尝试向 obj.arr 添加新元素时，
 // 由于 obj.arr 是一个数组且被冻结，所以会抛出 TypeError 错误，提示对象不可扩展。
 console.log(obj);
+
+var a = 10;

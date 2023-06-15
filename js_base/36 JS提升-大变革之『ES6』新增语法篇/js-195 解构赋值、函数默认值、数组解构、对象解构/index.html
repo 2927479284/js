@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        // let x = 1;
+        // function test(x = x){
+        //     console.log(x);
+        // }
+        // test();
+
+        // let x = 1;
+        // function test(y = x){
+        //     console.log(y);
+        // }
+        // test();
+
+        // let x = 1;
+        // function test(y = x){
+        //     let x = 2;
+        //     console.log(y)
+        // }
+        // test();
+
+
+        //
+        // let x = 1;
+        // // 这里test函数作用域
+        // // 等同于 let x = x;
+        // function test(x = x){
+        //     console.log(x);// 会报错 该x变量未初始化
+        // }
+        // test();
+        // {
+        //     let x = 1;
+        //     {
+        //         // 变量查找原则 由内向外
+        //         let x = x;
+        //         console.log(x);// 会报错 该x变量未初始化
+        //     }
+        // }
+
+
+        // 解构赋值
+        // 1.解构失败  变量多了 未赋值的会变成undefined
+        // 2.不完成解构  值多了.
+        // let [a,b] = [1,2];
+        // console.log(a,b);
+
+        // let [a = 10] = [];
+        // console.log(a);
+
+        // let [x = y, y = 1] = [];
+        // console.log(x,y) // Uncaught ReferenceError: Cannot access 'y' before initialization
+
+
+        // let name = 'zs';
+        // let age = '18';
+        // let obj = {
+        //     [name + age]: 'zs 18'
+        // }
+        // console.log(obj);// {zs18: 'zs 18'}
+        // console.log(obj['zs18']);// zs 18
+        // 对象解构
+        // 1.不会存在顺序问题 一个属性一个值
+        // let {a:a,b:b,c:c} = {};
+        // let {a,b,c} = {a:1,b:2,c:3};
+        // console.log(a,b,c);
+
+
+        // 案例
+        //
+
+        let person = {
+            name: 'zs',
+            age: 18,
+            son:{
+                name: 'lisi',
+                age: 30,
+                son:{
+                    name: 'wangwu',
+                    age: 18
+                }
+            }
+        }
+
+        let {son:{son: son1}} = person;
+        console.log(son1);
+    </script>
+</body>
+</html>
