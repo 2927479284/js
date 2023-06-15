@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-196 隐式转换、函数参数解构、解构本质、()用法</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        // let name1 = 'zs';
+        // let age1 = '18';
+        // let obj = {
+        //     name: name1,
+        //     age:age1
+        // }
+        // console.log(obj);
+
+        // let name1 = 'zs';
+        // let age1 = '18';
+        // let {name:name2,age:age2} = {name:name1,age:age1}
+        // console.log(name2,age2)// zs 18
+
+        // let name1 = 'zs';
+        // let age1 = '18';
+        // let {name1:name,age1:age} = {name1:name1,age1:age1}
+        // console.log(name,age)// zs 18
+
+        // let {a: b} = {};
+        // console.log(a);
+        // console.log(b);
+        //
+        // let obj = {};
+        // console.log(obj.a);
+
+
+        //
+        // let name1 = 'zs';
+        // let age1 = '18';
+        //
+        // let {name:name2,age:age2} = {name:name1,age:age1}
+        // console.log(name2,age2)// zs 18
+        //
+        // let {a:a1,b:b1,c:c1} = {a:1,b:2,c:3};
+        // console.log(a1,b1,c1);
+
+
+
+        // 数组是一种特殊的对象 也可以做到解构赋值
+        // let arr = [1,2,3];
+        // let {0:first,[arr.length-1]:two} = arr;
+        // console.log(first,two);
+        //
+
+
+        // let a = 'x',b = 'y', c='c', obj = {};
+        //
+        // ({a:obj[a+b]} = {a:2});
+        // console.log(obj);// {xy: 2}
+
+        //
+        // let a = 10,b = 20;
+        // let [b1,a1] = [a,b];
+        // console.log(a1,b1)
+        // console.log(a,b);
+
+        // 模式匹配可以匹配同源属性(同一个属性)
+        // let obj = {a:x,a:y} = {a:1};
+        // console.log(x,y);
+        // console.log(obj.a);
+        //
+        // let x = 10;
+        // console.log(x);
+
+
+        // var x = 200,y = 300,z = 100;
+        // // x:{y: 42}
+        // // z:{y: 100}
+        // var obj = {x:{y:42},z:{y:z}};
+        // console.log(obj);
+        //
+        // ({y: x = {y: y}} = obj);// obj 匹配不上 x = {y:300} x = 300
+        // ({z: y = {y: z}} = obj);// obj 匹配的上 z = {y:100} y = 100
+        // ({x: z = {y: x}} = obj);// obj 匹配的上 x = {y:42} z = 42
+        // console.log(x.y,y.y,z.y);
+        // console.log(x,y,z);
+
+
+        // let x = 200,y = 300,z = 100;
+        // // x:{y: 42}
+        // // z:{y: 100}
+        // let obj = {x:{y:42},z:{y:z}};
+        // console.log(obj);
+        //
+        // ({y: x = {y: y}} = obj);// obj 匹配不上 x = {y:300} x = 300
+        // ({z: y = {y: z}} = obj);// obj 匹配的上 z = {y:100} y = 100
+        // ({x: z = {y: x}} = obj);// obj 匹配的上 x = {y:42} z = 42
+        // console.log(x.y,y.y,z.y);
+        // console.log(x,y,z);
+
+
+        // function test(x = {}){
+        //     console.log(x);//打印一个对象 但是如果用解构赋值声明默认值就会是undefined
+        // }
+        // test();
+
+        // let {x} = {};
+        // console.log(x);// undefined
+
+
+        // 解构隐式转换
+        let [a,b,c,d,e] = 'hello';
+        console.log(a,b,c,d,e);
+
+        let arr={length:len} = 'hello';
+        console.log(arr);
+        console.log(len);
+    </script>
+</body>
+</html>
