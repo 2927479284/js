@@ -7,58 +7,84 @@
     <title>js-198 箭头函数的实质、箭头函数的使用场景</title>
 </head>
 <body>
+
+    <button class="button">button</button>
     <script type="text/javascript">
+        // 1.this 跟外层的函数作用域来决定的
+        // 2.=> 不能作为构造函数来使用
+        // 3.没有arguments 对象 用rest(扩展运算符替代);
+        // 4.yield 命令不能生效 在generator中
 
-        // var x = 1;
-        // function  foo(x,y = function () {x = 2;console.log(x)}){
-        //     //var x = 3;
-        //
-        //     y();
-        //     x = 3;
-        //     console.log(x);
-        // }
-        // foo();
-
-        // {
-        //     var x;
-        //     {
-        //         x = 2;
-        //         console.log(2)
+        // function foo() {
+        //     // this->obj1
+        //     console.log(this);
+        //     return ()=>{
+        //         // this 会像上级找 上级是普通函数 非箭头函数有自带的作用域 作用域中this指向obj1
+        //         // 箭头函数第二大特性 this 不会被改变
+        //         // 此时 this->obj1
+        //         console.log(this.a);
         //     }
-        //     console.log(x)
         // }
-
-        // this指向问题
-        // 1.默认绑定规则
-        // 2.隐式绑定：谁调用指向谁
-        // 3.显式绑定：call apply bind
-        // 4.new
-
-
-
-        // 箭头函数 配合解构赋值
-        // let foo = ({first,last} = {})=>{return first + '' + last};
-        // console.log(foo({first: 1, last: 2}));
-
-        // rest / spread 运算符
-        // ...args 这个args 可以随便定义 但必须在函数最后一位
-        // let foo1 = (...args)=>{
-        //     console.log(...args);
-        // }
-        // foo1(1,2,3,4,5,6);
+        // let obj1 = {a:2};
+        // let obj2 = {a:3};
+        // var foo1 = foo.call(obj1);
+        // // 箭头函数第二大特性 this 不会被改变
+        // // 此时 this->obj1
+        // foo1.call(obj2);// 打印 obj1.a 结果为2
 
 
-        // 箭头函数 配合数组排序 sort
-        // ...arr => 数组 继承原型 Array.prototype
-        let mySort = (...arr)=>arr.sort((a,b)=>a-b);
-        // [1, 2, 3, 3, 4, 4, 6, 13, 21, 34, 35, 45, 52, 123, 235, 534, 2135]
-        // 打印的是纯数组
-        console.log(mySort(1,2,3,21,3,4,534,2135,123,52,35,13,4,235,34,6,45));
+        // (function () {
+        //     function Button() {
+        //         this.button = document.getElementsByClassName('button')[0];
+        //     }
+        //
+        //     Button.prototype = {
+        //         init(){
+        //             this.bind();
+        //         },
+        //         bind(){
+        //             // 这里事件函数的this指向的是这个button标签
+        //             // 这里通过bind改变了this指向
+        //             // 用箭头函数替代
+        //             // 箭头函数 的this 指向并非是在执行的时候隐式生成
+        //             // 而是在定义的时候就定好了 那此时向外层找 找到 Button(){} 函数
+        //             // 这个函数是一个构造函数 this指向window
+        //             // 但new的优先级是最高的 此时this指向本身
+        //             this.button.addEventListener('click',(e)=>this.btnClick(e),false);
+        //         },
+        //         btnClick(e){
+        //             console.log(e)
+        //             console.log(this);
+        //             console.log("click")
+        //         }
+        //     }
+        //
+        //     new Button().init();
+        // })();
 
-        // 函数形参长度问题：
-        // 1.rest / spread 不算
-        // 形参自带默认值不算
-        console.log(function (a,b,c,d=1,...arr){}.length);//3
+        /**
+         * 结论：
+         * 1.箭头函数的this 是固化的
+         * 2.他本身没有this指向
+         * 3.他只能通过父级的作用域来获取this（但父级的作用域的this是可以被修改的）
+         * 4.不能使用显式转换：call apply bind
+         */
+
+
+        /**
+         * 测试方法
+         */
+        function test(){
+            let a = ()=>{
+                // 都能正常打印
+                console.log(this);
+                console.log(arguments);
+            }
+            a();
+        }
+        test(1,2,3,4,4,2,12);
+
+
     </script>
 </body>
 </html>

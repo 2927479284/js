@@ -9,7 +9,56 @@
 <body>
     <script type="text/javascript">
 
+        // var x = 1;
+        // function  foo(x,y = function () {x = 2;console.log(x)}){
+        //     //var x = 3;
+        //
+        //     y();
+        //     x = 3;
+        //     console.log(x);
+        // }
+        // foo();
 
+        // {
+        //     var x;
+        //     {
+        //         x = 2;
+        //         console.log(2)
+        //     }
+        //     console.log(x)
+        // }
+
+        // this指向问题
+        // 1.默认绑定规则
+        // 2.隐式绑定：谁调用指向谁
+        // 3.显式绑定：call apply bind
+        // 4.new
+
+
+
+        // 箭头函数 配合解构赋值
+        // let foo = ({first,last} = {})=>{return first + '' + last};
+        // console.log(foo({first: 1, last: 2}));
+
+        // rest / spread 运算符
+        // ...args 这个args 可以随便定义 但必须在函数最后一位
+        // let foo1 = (...args)=>{
+        //     console.log(...args);
+        // }
+        // foo1(1,2,3,4,5,6);
+
+
+        // 箭头函数 配合数组排序 sort
+        // ...arr => 数组 继承原型 Array.prototype
+        let mySort = (...arr)=>arr.sort((a,b)=>a-b);
+        // [1, 2, 3, 3, 4, 4, 6, 13, 21, 34, 35, 45, 52, 123, 235, 534, 2135]
+        // 打印的是纯数组
+        console.log(mySort(1,2,3,21,3,4,534,2135,123,52,35,13,4,235,34,6,45));
+
+        // 函数形参长度问题：
+        // 1.rest / spread 不算
+        // 形参自带默认值不算
+        console.log(function (a,b,c,d=1,...arr){}.length);//3
     </script>
 </body>
 </html>
