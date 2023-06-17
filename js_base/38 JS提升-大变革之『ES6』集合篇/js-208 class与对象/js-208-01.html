@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-208 class与对象 </title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        // class 类
+
+        class Person{
+            constructor(name,age) {
+                // 实例化属性配置 私有属性
+                this.name = name;
+                this.age = age
+            }
+            // 公有属性
+            say(){
+                console.log(this.name,this.age);
+                return null;
+            }
+        }
+
+        console.log(new Person('zs',12).say());
+        // 类的总结
+        // 1.class 与 let TDZ
+        // 2.公有属性的方法 不可枚举 以前的方法可以枚举
+        // 3.默认严格模式
+        // 4.类中会有一个默认的constructor 不会报错
+        // 5.new方式来执行
+    </script>
+</body>
+</html>

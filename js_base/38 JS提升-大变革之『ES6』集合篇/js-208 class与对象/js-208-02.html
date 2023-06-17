@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-208 class与对象 </title>
+</head>
+<body>
+    <script type="text/javascript">
+        // class 类的继承
+
+        // 父类
+        class Parent{
+            constructor(name = "zs") {
+                this.name = name;
+            }
+            ParentPrint(){
+                console.log(this.name);
+            }
+        }
+
+
+        // 派生类
+        class Child extends Parent{
+            constructor(name = 'zs',age,sex) {
+                // 这里必须写super 否则无法使用this
+                super(name);
+                this.age = age;
+                this.sex = sex;
+            }
+            ChildPrint(){
+                console.log(this.age,this.sex);
+            }
+        }
+
+        new Child('zhangsan',18,'男').ParentPrint();
+        new Child('zhangsan',18,'男').ChildPrint();
+
+        // supper
+        // supper是在当前对象时：1.在对象当中指代 对象的原型。
+        //                    2.在静态方法中 指向父类
+
+    </script>
+</body>
+</html>
