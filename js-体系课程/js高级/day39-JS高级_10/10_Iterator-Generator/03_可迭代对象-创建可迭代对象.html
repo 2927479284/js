@@ -18,13 +18,16 @@
     const infos = {
       friends: ["kobe", "james", "curry"],
       [Symbol.iterator]: function() {
-        let index = 0
+        let index = 0;
+        let _self = this;
         const infosIterator = {
-          next: function() {
+          name: "zs",
+          next: () => {
             // done: Boolean
             // value: 具体值/undefined
-            if (index < infos.friends.length) {
-              return { done: false, value: infos.friends[index++] }
+            console.log(this)
+            if (index < this.friends.length) {
+              return { done: false, value: this.friends[index++] }
             } else {
               return { done: true }
             }
@@ -42,27 +45,42 @@
 
 
     // 可迭代对象必然具备下面的特点
-    // const iterator = infos[Symbol.iterator]()
-    // console.log(iterator.next())
-    // console.log(iterator.next())
-    // console.log(iterator.next())
-    // console.log(iterator.next())
+    const iterator = infos[Symbol.iterator]()
+    console.log(iterator.next())
+    console.log(iterator.next())
+    console.log(iterator.next())
+    console.log(iterator.next())
 
-    // 可迭对象可以进行for of操作
-    for (const item of infos) {
-      console.log(item)
+
+    let obj = {
+      arr: [1,2,3,4,5],
+      foo: function () {
+        return ()=>{
+          // 找到上级 foo函数的this 此时这个this指向 obj 所以这个箭头函数的this也指向obj
+          console.log(this);
+          console.log(1);
+          console.log(2);
+        }
+      }
     }
-
-
-    // 可迭代对象必然有一个[Symbol.iterator]函数
-    // 数组是一个可迭代对象
-    const students = ["张三", "李四", "王五"]
-    console.log(students[Symbol.iterator])
-    const studentIterator = students[Symbol.iterator]()
-    console.log(studentIterator.next())
-    console.log(studentIterator.next())
-    console.log(studentIterator.next())
-    console.log(studentIterator.next())
+    let foo  = obj.foo();
+    // console.log(obj.foo());
+    foo();
+    // // 可迭对象可以进行for of操作
+    // for (const item of infos) {
+    //   console.log(item)
+    // }
+    //
+    //
+    // // 可迭代对象必然有一个[Symbol.iterator]函数
+    // // 数组是一个可迭代对象
+    // const students = ["张三", "李四", "王五"]
+    // console.log(students[Symbol.iterator])
+    // const studentIterator = students[Symbol.iterator]()
+    // console.log(studentIterator.next())
+    // console.log(studentIterator.next())
+    // console.log(studentIterator.next())
+    // console.log(studentIterator.next())
 
   </script>
 

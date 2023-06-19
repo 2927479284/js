@@ -4,48 +4,39 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Iterator、Generator(生成器 特殊的迭代器)</title>
 </head>
 <body>
   
   <script>
+    // Iterator 迭代器
+    // 用于遍历某个容器的对象 数组/连表等等
+    let arr1 = ['1','2','3','4'];
+    let arr2 = ['a','b','c','d'];
 
-    const names = ["abc", "cba", "nba"]
-    
-    // 给数组names创建一个迭代器(迭代器: names的跌大气)
-    let index = 0
-    const namesIterator = {
-      next: function() {
-        // done: Boolean
-        // value: 具体值/undefined
-        if (index < names.length) {
-          return { done: false, value: names[index++] }
-        } else {
-          return { done: true }
+
+    function createIterator(arr){
+      let index = 0;
+      return {
+        next(){
+          if (index<arr.length){
+            // 小于说明还有数据
+            // let value = {done:false,value:arr[index]}
+            // index++;
+            return {done:false,value:arr[index++]};
+          }else{
+            return {done:true,value: undefined};
+          }
         }
       }
     }
 
-    console.log(namesIterator.next())
-    console.log(namesIterator.next())
-    console.log(namesIterator.next())
-    console.log(namesIterator.next())
+    let iterator = createIterator(arr1);
+    console.log(iterator.next());
 
-    // 数组nums
-    const nums = [100, 24, 55, 66, 86]
-    
-    let indexNum = 0
-    const numsIterator = {
-      next: function() {
-        // done: Boolean
-        // value: 具体值/undefined
-        if (indexNum < nums.length) {
-          return { done: false, value: nums[indexNum++] }
-        } else {
-          return { done: true }
-        }
-      }
-    }
+
+
+    // Generator(生成器 特殊的迭代器)
 
   </script>
 

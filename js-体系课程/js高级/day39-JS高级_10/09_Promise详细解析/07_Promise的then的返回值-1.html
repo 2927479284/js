@@ -9,12 +9,41 @@
 <body>
   
   <script type="text/javascript">
+    // let promise = new Promise((resolve, reject)=>{
+    //   resolve(1);
+    // });
+    // promise.then((resolve)=>{
+    //   console.log(resolve);
+    // })
+
     let promise = new Promise((resolve, reject)=>{
-      resolve(1);
+      if (1===0) {
+        console.log(1)
+        resolve(1);
+      }else{
+
+        // 这里的方法应该不会影响主线程的打印执行
+        setTimeout(()=>{
+          console.log(0)
+        },1000);
+        reject(0);
+      }
     });
-    promise.then((resolve)=>{
-      console.log(resolve);
-    })
+    // 中断函数执行
+    // 方式一：return
+    // 方式二：throw new Error
+    // 方式三：yield(暂停[暂时性的中断])
+    promise.then((res)=>{
+      console.log(res);
+    }).then((res)=>{
+      console.log(res);
+    }).then((res)=>{
+      console.log(res);
+    }).catch((reg)=>{
+      console.log('error：'+reg);
+    });
+    console.log(2);
+
   </script>
 
 </body>

@@ -55,6 +55,7 @@
     // console.log(generator.next()) // { done: true, value: undefined }
 
     // 4.给函数每次执行的时候, 传入参数
+    // 一般情况下 第一次是不会在next传入参数
     console.log(generator.next())
     console.log(generator.next("next2"))
     console.log(generator.next("next3"))
