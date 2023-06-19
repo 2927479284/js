@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 封装请求的方法: url -> promise(result)
+    function requestData(url) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(url)
+        }, 2000)
+      })
+    }
+    // 1.首先使用 es6语法
+    // function* getData(){
+    //   let res1 = yield requestData('zhangsan');
+    //   console.log('res1',res1);
+    //   let res2 = yield requestData('lisi');
+    //   console.log('res2',res2);
+    //   let res3 = yield requestData('wangwu');
+    //   console.log('res3',res3);
+    // }
+    // // 1.首先调用方法 返回一个生成器
+    // let generator = getData();
+    // generator.next().value.then((res1)=>{
+    //
+    //   generator.next(res1).value.then((res2)=>{
+    //
+    //     generator.next(res2).value.then((res3)=>{
+    //
+    //       generator.next(res3);
+    //
+    //     })
+    //
+    //   })
+    // });
+
+    // 最新写法
+    async function getData(){
+      let res1 = await requestData('zhangsan');
+      console.log('res1',res1);
+      let res2 = await requestData('lisi');
+      console.log('res2',res2);
+      let res3 = await requestData('wangwu');
+      console.log('res3',res3);
+    }
+
+    getData();
+
+
+
+  </script>
+
+</body>
+</html>
