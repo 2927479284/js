@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 1.创建XMLHttpRequest对象
+
+    let xmlHttpRequest = new XMLHttpRequest();
+
+    // 2.监听状态的改变(宏任务)
+    xmlHttpRequest.onreadystatechange = ()=>{
+      if (xmlHttpRequest.readyState !== xmlHttpRequest.DONE) return;
+      let parse = JSON.parse(xmlHttpRequest.response);
+      let dataArray = parse.data;
+      for (let i = 0; i < dataArray.length; i++) {
+        console.log('分类名称：'+dataArray[i].classificationName);
+        console.log('分类地址：'+dataArray[i].classificationUrl);
+      }
+    }
+
+    // 3.配置请求open
+    // method: 请求的方式(get/post/delete/put/patch...)
+    // url: 请求的地址
+    xmlHttpRequest.open('GET','http://localhost:8082/api/classification');
+
+    // 4.发送请求(浏览器帮助发送对应请求)
+    xmlHttpRequest.send();
+
+  </script>
+
+</body>
+</html>

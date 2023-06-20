@@ -11,14 +11,17 @@
   <script>
 
     // 练习hyajax -> axios
-    function hyajax({
-      url,
-      method = "get",
-      data = {},
-      headers = {}, // token
-      success,
-      failure
-    } = {}) {
+    function hyajax(
+            {
+              url,
+              method = "get",
+              data = {},
+              headers = {}, // token
+              success,
+              failure
+            } = {}
+    )
+    {
       // 1.创建对象
       const xhr = new XMLHttpRequest()
 

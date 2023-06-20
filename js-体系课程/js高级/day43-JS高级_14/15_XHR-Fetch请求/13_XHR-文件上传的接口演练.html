@@ -16,31 +16,40 @@
     // xhr/fetch
 
     const uploadBtn = document.querySelector(".upload")
+    const fileEl = document.querySelector(".file")
+    const file = fileEl.files[0]
+    console.log(file);
+
+
     uploadBtn.onclick = function() {
-      // 1.创建对象
-      const xhr = new XMLHttpRequest()
 
-      // 2.监听结果
-      xhr.onload = function() {
-        console.log(xhr.response)
-      }
-
-      xhr.onprogress = function(event) {
-        console.log(event)
-      }
-      
-
-      xhr.responseType = "json"
-      xhr.open("post", "http://123.207.32.32:1888/02_param/upload")
-
-      // 表单
       const fileEl = document.querySelector(".file")
       const file = fileEl.files[0]
-
-      const formData = new FormData()
-      formData.append("avatar", file)
-
-      xhr.send(formData)
+      console.log(file);
+      // // 1.创建对象
+      // const xhr = new XMLHttpRequest()
+      //
+      // // 2.监听结果
+      // xhr.onload = function() {
+      //   console.log(xhr.response)
+      // }
+      //
+      // xhr.onprogress = function(event) {
+      //   console.log(event)
+      // }
+      //
+      //
+      // xhr.responseType = "json"
+      // xhr.open("post", "http://123.207.32.32:1888/02_param/upload")
+      //
+      // // 表单
+      // const fileEl = document.querySelector(".file")
+      // const file = fileEl.files[0]
+      // console.log(file);
+      // const formData = new FormData()
+      // formData.append("avatar", file)
+      //
+      // xhr.send(formData)
     }
   </script>
 
