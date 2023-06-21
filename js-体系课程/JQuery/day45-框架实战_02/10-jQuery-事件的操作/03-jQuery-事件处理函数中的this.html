@@ -35,7 +35,9 @@
       // })
 
       // 底层实现的原理
-      // var lisEl = $('ul li').get() // [li, li, li]
+      //var lisEl = $('ul li').get() // [li, li, li]
+      // var lisEl = document.getElementsByTagName('li');
+      // console.log(lisEl);
       // for(var liEL of lisEl ){
       //   liEL.addEventListener('click', function() {
       //     console.log(this)
@@ -46,9 +48,9 @@
       //   console.log( $(this) ) // DOM Element 转成 jQuery 对象
       // })
       
-      $('ul li').click(() => {
-        console.log(this)
-      })
+      // $('ul li').click(() => {
+      //   console.log(this)
+      // })
 
     })
   </script>

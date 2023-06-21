@@ -35,9 +35,9 @@
   <div class="nav">
     <div class="nav-bar" >
       <div class="item active">首页</div>
-      <div class="item">9块9包邮</div>
-      <div class="item">超值大额券</div>
-      <div class="item">降温急救穿搭</div>
+      <div class="item 1">9块9包邮</div>
+      <div class="item 2">超值大额券</div>
+      <div class="item 3">降温急救穿搭</div>
     </div>
   </div>
 
@@ -47,7 +47,8 @@
     $(function() {
       
       $('.item').on('click', function() {
-        $(this).addClass('active').siblings().removeClass('active')
+        console.log($(this).siblings());
+        // $(this).addClass('active').siblings().removeClass('active')
       })
 
       // console.log($('.item:eq(1)').siblings())

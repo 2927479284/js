@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <ul id="list" class="panel">
+    <li class="li-1">li-1</li>
+    <li class="li-2">li-2</li>
+    <li class="li-3">li-3</li>
+    <li class="li-4">li-4</li>
+    <li class="li-5">li-5</li>
+    <li class="li-6">li-5</li>
+    <li class="li-7">li-5</li>
+    <li class="li-8">li-5</li>
+  </ul>
+
+  <script src="../libs/jquery-3.6.0.js"></script>
+  <script>
+    // 1.监听文档完全解析完成
+    $(function() {
+      let arrData;
+      $.ajax(
+              {
+                url: "http://localhost:8082/api/classification",
+                type: "get",
+                success(res) {
+                  // console.log(res);
+                  console.log(res.data)
+                  arrData = res.data;
+                  let OLi = $('ul li');
+                  for (let i = 0; i < arrData.length; i++) {
+                    OLi[i].innerText = arrData[i].classificationName;
+                  }
+                },
+              }
+      ).then((res) => {
+        console.log(res);
+      });
+
+      //
+      //   $.post("http://localhost:8082/api/testPost",JSON.stringify({
+      //     name: "张三",
+      //     age: 18,
+      //     friends: ['李四','王五','赵六','田七']
+      //   })).then((res)=>{
+      //     console.log(res)
+      //   }).catch((error)=>{
+      //     console.log('请求发生错误：'+error);
+      //   })
+      // })
+
+
+      $.ajax(
+        {
+          url: "http://localhost:8082/api/testPost",
+          method: "POST",
+          data: JSON.stringify({
+                name: "张三",
+                age: 18,
+                friends: ['李四','王五','赵六','田七']
+              }),
+          contentType: "application/json; charset=UTF-8",
+        }
+      ).then((res)=> {
+        console.log(res);
+      });
+    });
+  </script>
+</body>
+</html>
