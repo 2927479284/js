@@ -1,0 +1,10 @@
+.content {
+  color: red;
+  user-select: none;
+}
+
+.bg-image {
+  background: url(../img/nhlt.jpg);
+  width: 500px;
+  height: 500px;
+}

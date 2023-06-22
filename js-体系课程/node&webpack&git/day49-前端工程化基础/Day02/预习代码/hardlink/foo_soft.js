@@ -1,0 +1,5 @@
+XSym
+0006
+c30102c2bcf57c992ba3491b22e1e4d0
+foo.js
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
