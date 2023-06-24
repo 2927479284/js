@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app">
+    <!-- 1.单选框 -->
+    <label for="agree">
+      <input id="agree" type="checkbox" v-model="isAgree"> 同意协议
+    </label>
+    <h2>isAgree: {{isAgree}}</h2>
+
+    <!-- 2.多选框 -->
+    <div>
+      <label for="sing">
+        <input id="sing" type="checkbox" v-model="hobbies" value="唱"> 唱
+      </label>
+      <label for="jump">
+        <input id="jump" type="checkbox" v-model="hobbies" value="跳"> 跳
+      </label>
+      <label for="rap">
+        <input id="rap" type="checkbox" v-model="hobbies" value="rap"> rap
+      </label>
+      <label for="basketball">
+        <input id="basketball" type="checkbox" v-model="hobbies" value="篮球"> 篮球
+      </label>
+      <h2>hobbies: {{hobbies}}</h2>
+    </div>
+  </div>
+
+  <script src="./js/vue.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          isAgree: false,
+          hobbies: []
+        }
+      }
+    })
+    app.mount("#app")
+  </script>
+
+</body>
+</html>
