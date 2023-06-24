@@ -1,4 +1,4 @@
-const path = require("path")
+/87const path = require("path")
 
 module.exports = {
   entry: "./src/main.js",

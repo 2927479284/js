@@ -16,7 +16,7 @@ let print3 = ()=>{
 let print4 = ()=>{
     console.log("print4")
 }
-
+-
 print1();
 print2();
 print3();
