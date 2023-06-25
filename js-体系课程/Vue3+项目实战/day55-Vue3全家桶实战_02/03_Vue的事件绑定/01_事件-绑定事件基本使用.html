@@ -38,29 +38,11 @@
   
   <script src="../lib/vue.js"></script>
   <script>
-    // 1.创建app
     const app = Vue.createApp({
-      // data: option api
-      data: function() {
-        return {
-          counter: 0
-        }
-      },
-      methods: {
-        divClick() {
-          console.log("divClick")
-        },
-        increment() {
-          this.counter++
-        },
-        divMousemove() {
-          console.log("divMousemove")
-        }
-      }
-    })
+    });
 
-    // 2.挂载app
-    app.mount("#app")
+
+    app.mount("#app");
   </script>
 </body>
 </html>
