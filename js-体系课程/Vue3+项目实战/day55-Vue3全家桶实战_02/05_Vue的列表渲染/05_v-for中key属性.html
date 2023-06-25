@@ -11,6 +11,7 @@
     <button @click="insertF">插入f</button>
     <ul>
       <!-- key要求是唯一: id -->
+      <!-- 必须要写key绑定一个唯一值 -->
       <li v-for="item in letters" :key="item">{{item}}</li>
     </ul>
   </div>
@@ -29,13 +30,13 @@
         insertF() {
           this.letters.splice(2, 0, "f")
 
-          this.letters.splice()
+            this.letters.splice()
+          }
         }
-      }
-    })
+      })
 
-    // 2.挂载app
-    app.mount("#app")
-  </script>
-</body>
+      // 2.挂载app
+      app.mount("#app")
+    </script>
+  </body>
 </html>

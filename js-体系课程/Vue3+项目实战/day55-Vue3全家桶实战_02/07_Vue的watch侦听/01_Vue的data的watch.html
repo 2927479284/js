@@ -14,41 +14,28 @@
   
   <script src="../lib/vue.js"></script>
   <script>
-    // Proxy -> Reflect
-    // 1.创建app
     const app = Vue.createApp({
-      // data: option api
-      data() {
+      data(){
         return {
-          message: "Hello Vue",
-          info: { name: "why", age: 18 }
+          message: "message"
         }
       },
-      methods: {
-        changeMessage() {
-          this.message = "你好啊, 李银河!"
-          this.info = { name: "kobe" }
+      methods:{
+        changeMessage(){
+          this.message = "message被修改了";
         }
       },
-      watch: {
-        // 1.默认有两个参数: newValue/oldValue
-        message(newValue, oldValue) {
-          console.log("message数据发生了变化:", newValue, oldValue)
-        },
-        info(newValue, oldValue) {
-          // 2.如果是对象类型, 那么拿到的是代理对象
-          // console.log("info数据发生了变化:", newValue, oldValue)
-          // console.log(newValue.name, oldValue.name)
-
-          // 3.获取原生对象
-          // console.log({ ...newValue })
-          console.log(Vue.toRaw(newValue))
+      watch:{
+        // 1. 默认传入参数
+        // 第一个值：最新的数据 newData
+        // 第二个值：老数据 oldData
+        message(){
+          console.log("watch 监听 data中的message属性的值发生了改变");
         }
       }
-    })
+    });
 
-    // 2.挂载app
-    app.mount("#app")
+    app.mount("#app");
   </script>
 </body>
 </html>
