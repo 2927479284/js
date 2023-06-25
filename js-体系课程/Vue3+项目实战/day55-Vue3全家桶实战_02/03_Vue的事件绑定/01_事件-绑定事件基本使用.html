@@ -25,7 +25,7 @@
     <!-- 3.绑定的方法位置, 也可以写成一个表达式(不常用, 不推荐) -->
     <h2>{{ counter }}</h2>
     <button @click="increment">+1</button>
-    <button @click="counter++">+1</button>
+    <button @click="counter--">-1</button>
 
     <!-- 4.绑定其他方法(掌握) -->
     <div class="box" @mousemove="divMousemove"></div>
@@ -39,8 +39,23 @@
   <script src="../lib/vue.js"></script>
   <script>
     const app = Vue.createApp({
+      data(){
+        return {
+          counter: 0
+        }
+      },
+      methods:{
+        increment(){
+          this.counter++;
+        },
+        divClick(){
+          console.log('divClick');
+        },
+        divMousemove(){
+          console.log("divMousemove");
+        }
+      }
     });
-
 
     app.mount("#app");
   </script>
