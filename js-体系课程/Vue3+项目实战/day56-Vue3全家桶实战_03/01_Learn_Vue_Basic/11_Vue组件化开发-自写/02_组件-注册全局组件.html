@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .product {
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <product-item></product-item>
+    <product-item></product-item>
+    <product-item></product-item>
+    <product-item></product-item>
+  </div>
+  <!-- 组件product-item的模板 -->
+  <template id="item">
+    <div class="product">
+      <h2>我是商品</h2>
+      <div>商品图片</div>
+      <div>商品价格: <span>¥9.9</span></div>
+      <p>商品描述信息, 9.9秒杀</p>
+    </div>
+  </template>
+</body>
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.根组件
+    const App = {};
+    const app = Vue.createApp(App);
+
+    let Product = {
+      template: "#item",
+    }
+    // 注册全局组件
+    app.component("product-item",Product);
+
+    app.mount("#app");
+  </script>
+</html>

@@ -73,58 +73,44 @@
   <script src="../lib/vue.js"></script>
   <script src="./data/data.js"></script>
   <script>
-    // 1.创建app
+
+    console.log(books);
+    console.log(books.length);
     const app = Vue.createApp({
-      // data: option api
-      data() {
+      // 数据监听
+      data(){
         return {
-          books: books,
-          currentIndex: 0
+          books: books
         }
       },
-      // computed
-      computed: {
-        totalPrice() {
-          // 1.直接遍历books
-          // let price = 0
-          // for (const item of this.books) {
-          //   price += item.price * item.count
-          // }
-          // return price
-
-          // 2.reduce(自己决定)
-          return this.books.reduce((preValue, item) => {
-            return preValue + item.price * item.count
-          }, 0)
+      // 函数集合
+      methods:{
+        formatPrice(value){
+          return "￥"+value;
+        },
+        increment(index,item){
+          item.count++;
+        },
+        decrement(index,item){
+          item.count--;
+        },
+        removeBook(index,item){
+          this.books.splice(index,1);
         }
       },
-      methods: {
-        formatPrice(price) {
-          return "¥" + price
-        },
-
-        // 监听-和+操作
-        decrement(index, item) {
-          console.log("点击-")
-          // this.books[index].count--
-          item.count--
-        },
-        increment(index, item) {
-          console.log("点击+:", index)
-          // this.books[index].count++
-          item.count++
-        },
-        removeBook(index, item) {
-          this.books.splice(index, 1)
-        },
-        rowClick(index) {
-          this.currentIndex = index
+      // 属性监听
+      computed:{
+        totalPrice(){
+          let price = 0;
+          for (const book of this.books) {
+            price += book.price * book.count;
+          }
+          return price;
         }
       }
-    })
+    });
 
-    // 2.挂载app
-    app.mount("#app")
+    app.mount("#app");
   </script>
 </body>
 </html>
