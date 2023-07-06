@@ -10,7 +10,13 @@
 </template>
 
 <script setup>
+
   import { useRoute, onBeforeRouteUpdate } from 'vue-router'
+  import {onActivated} from "vue";
+
+  onActivated(()=>{
+    console.log("组件创建成功")
+  })
 
   const route = useRoute()
   console.log(route.params.id)
