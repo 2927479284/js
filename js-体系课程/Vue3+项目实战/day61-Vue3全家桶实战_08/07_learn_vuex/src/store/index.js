@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+ import { createStore } from 'vuex'
 import { CHANGE_INFO } from './mutation_types'
 
 const store = createStore({
