@@ -5,7 +5,7 @@
       <img src="@/assets/img/home/banner.webp" alt="">
     </div>
     <div class="location">
-      <div class="city">广州</div>
+      <div class="city" @click="cityClick">广州</div>
       <div class="position">
         <span class="text">我的位置</span>
         <img src="@/assets/img/home/icon_location.png" alt="">
@@ -17,6 +17,11 @@
 <script setup>
 
 import HomeNavBar from './cpns/home-nav-bar.vue'
+import {useRouter} from "vue-router";
+const router = useRouter();
+const cityClick = ()=>{
+  router.push("/city")
+}
 
 </script>
 
