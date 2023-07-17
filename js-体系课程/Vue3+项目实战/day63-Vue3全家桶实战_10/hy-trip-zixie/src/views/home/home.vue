@@ -4,24 +4,29 @@
     <div class="banner">
       <img src="@/assets/img/home/banner.webp" alt="">
     </div>
-    <div class="location">
-      <div class="city" @click="cityClick">广州</div>
-      <div class="position">
-        <span class="text">我的位置</span>
-        <img src="@/assets/img/home/icon_location.png" alt="">
-      </div>
-    </div>
+    <home-search-box/>
+    <home-categories />
+
+
+
   </div>
 </template>
 
 <script setup>
 
 import HomeNavBar from './cpns/home-nav-bar.vue'
+import HomeSearchBox from "./cpns/home-search-box.vue"
+import HomeCategories from "./cpns/home-categories.vue"
+
 import {useRouter} from "vue-router";
+import useHomeStore from "@/stores/moudules/home";
 const router = useRouter();
-const cityClick = ()=>{
-  router.push("/city")
-}
+
+// 发送网络请求
+const homeStore = useHomeStore();
+homeStore.fetchHotSuggestData();
+homeStore.fetchCategoriesData()
+
 
 </script>
 
@@ -29,35 +34,6 @@ const cityClick = ()=>{
 .banner {
   img {
     width: 100%;
-  }
-}
-
-.location {
-  display: flex;
-  align-items: center;
-  height: 44px;
-  padding: 0 20px;
-
-  .city {
-    flex: 1;
-  }
-
-  .position {
-    width: 74px;
-    display: flex;
-    align-items: center;
-
-    .text {
-      position: relative;
-      top: 2px;
-      font-size: 12px;
-    }
-
-    img {
-      margin-left: 5px;
-      width: 18px;
-      height: 18px;
-    }
   }
 }
 </style>

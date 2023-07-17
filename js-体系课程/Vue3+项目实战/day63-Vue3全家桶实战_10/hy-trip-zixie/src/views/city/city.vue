@@ -1,31 +1,41 @@
 <template>
 
     <div class="city top-page">
-        <!-- 搜索框 -->
-        <van-search
-                v-model="searchValue"
-                show-action
-                placeholder="城市/区域/位置"
-                shape="round"
-                @search="onSearch"
-                @cancel="cancelClick"></van-search>
-        <!-- Tab的切换 -->
-        <van-tabs v-model:active="tabActive" color="#ff9854">
 
-            <template v-for="(value,key,index) in allCities" :key="key">
-                <van-tab :title="value.title + index"></van-tab>
+        <div class="top">
+            <!-- 搜索框 -->
+            <van-search
+                    v-model="searchValue"
+                    show-action
+                    placeholder="城市/区域/位置"
+                    shape="round"
+                    @cancel="cancelClick"></van-search>
+            <!-- Tab的切换 -->
+            <van-tabs v-model:active="tabActive" color="#ff9854">
+
+                <template v-for="(value,key,index) in allCities" :key="key">
+                    <van-tab :title="value.title" :name="key"></van-tab>
+                </template>
+            </van-tabs>
+        </div>
+
+        <div class="content">
+            <template v-for="(value,key,index) in allCities">
+                <city-group v-show="tabActive === key" :group-data="value"/>
             </template>
-        </van-tabs>
+        </div>
     </div>
 </template>
 
 
 <script setup>
 
-    import {ref} from "vue";
+    import {computed, ref} from "vue";
     import {useRouter} from "vue-router";
     import useCityStore from "@/stores/moudules/city"
     import {storeToRefs} from "pinia";
+    import CityGroup from './cpns/city-group.vue'
+
     let searchValue = ref("")
 
     const router = useRouter();
@@ -39,17 +49,26 @@
     cityStore.fetchAllCitiesData();
     const {allCities}  = storeToRefs(cityStore);
 
+    const currentGroup = computed(()=>allCities.value[tabActive.value]);
+    console.log(currentGroup);
+
 </script>
 
 
-<style scoped>
+<style lang="less" scoped>
 
 .city{
-    position: relative;
-    z-index: 9;
-    height: 100vh;
-    background-color: #fff;
-    overflow-y: auto;
+
+
+    .top {
+        position: relative;
+        z-index: 9;
+    }
+
+    .content {
+        height: calc(100vh - 98px);
+        overflow-y: auto;
+    }
 }
 
 </style>
