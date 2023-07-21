@@ -14,14 +14,14 @@
             <div class="start">
                 <div class="date">
                     <span class="tip">入住</span>
-                    <span class="time">{{ startDate }}</span>
+                    <span class="time">{{ startDateStr }}</span>
                 </div>
                 <div class="stay">共{{ stayCount }}晚</div>
             </div>
             <div class="end">
                 <div class="date">
                     <span class="tip">离店</span>
-                    <span class="time">{{ endDate }}</span>
+                    <span class="time">{{ endDateStr }}</span>
                 </div>
             </div>
         </div>
@@ -70,6 +70,8 @@
     import {ref} from "vue";
     import { formatMonthDay, getDiffDays } from "@/utils/format_date";
     import useHomeStore from "@/stores/moudules/home"
+    import useMainStore from '@/stores/moudules/main';
+    import { computed } from '@vue/reactivity';
 
     const cityStore = useCityStore()
     const router = useRouter();
@@ -80,21 +82,25 @@
 
 
     // 日期范围的处理
+    const mainStore = useMainStore()
+    const { startDate, endDate } = storeToRefs(mainStore)
+
     const nowDate = new Date()
     const newDate = new Date()
     newDate.setDate(nowDate.getDate() + 1)
 
-    const startDate = ref(formatMonthDay(nowDate));
-    const endDate = ref(formatMonthDay(newDate));
-    const stayCount = ref(getDiffDays(nowDate, newDate));
+    const startDateStr = computed(() => formatMonthDay(startDate.value))
+    const endDateStr = computed(() => formatMonthDay(endDate.value))
+    const stayCount = ref(getDiffDays(startDate.value, endDate.value))
+
 
     const showCalendar = ref(false);
     const onConfirm = (value) => {
         // 1.设置日期
         const selectStartDate = value[0]
         const selectEndDate = value[1]
-        startDate.value = formatMonthDay(selectStartDate)
-        endDate.value = formatMonthDay(selectEndDate)
+        mainStore.startDate = selectStartDate
+        mainStore.endDate = selectEndDate
         stayCount.value = getDiffDays(selectStartDate, selectEndDate)
         // 2.隐藏日历
         showCalendar.value = false
