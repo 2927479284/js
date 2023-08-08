@@ -9,7 +9,11 @@ const router = createRouter({
         },
         {
             path: "/home",
-            component: ()=>import("@/views/home/home.vue")
+            component: ()=>import("@/views/home/home.vue"),
+            meta:{
+                // 路由自带数据
+                hideTabBar: true
+            }
         },
         {
             path: "/favor",
@@ -36,6 +40,14 @@ const router = createRouter({
             meta:{
                 // 路由自带数据
                 hideTabBar: true
+            }
+        },
+        {
+            path: "/detail/:id",
+            component: ()=>import("@/views/detail/detail.vue"),
+            meta:{
+                // 路由自带数据
+
             }
         }
     ]
